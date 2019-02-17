@@ -1,0 +1,55 @@
+
+.headbar{
+    background:#184B89;
+    width: 100%;
+    height: 84px;
+}
+
+.header, img{
+width: 100%;
+height: 334px;
+}
+
+.nav-bar-left{
+
+}
+
+.newsletter{
+    background: #00FFBA;
+    width: 400px;
+    height: 276px;
+}
+
+.ebook{
+    background: #0093FF;
+    width: 400px;
+    height: 350px;
+
+}
+
+.posts-anteriores{
+background: #F4F4F4;
+width: 400px;
+height: 802px;
+}
+
+.container{
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif,
+}
+
+.titulo{
+
+}
+
+.post{
+
+}
+
+.form{
+
+}
+
+.footer{
+
+}
+
