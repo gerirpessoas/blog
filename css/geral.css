@@ -1,99 +1,65 @@
-    @import url('https://fonts.googleapis.com/css?family=Ubuntu');
-    @import url('https://fonts.googleapis.com/css?family=Roboto');
-    .headbar {
-        background: #184B89;
-        width: 100%;
-        height: 73px;
-    }
-
-    .header, .img-header {
-        margin-top: 30px;
-        margin-left: 30px;
-        width: 693px;
-        height: 369.16px;
-    }
-
-@media (min-width: 48em){
-
-    .nav-bar-left {
-        padding-left: 20px;
-        display: block;
-        float: right;
-    }
-
-    .newsletter {
-        background: #00FFBA;
-        width: 400px;
-        height: 276px;
-    }
-
-    .ebook {
-        background: #0093FF;
-        width: 400px;
-        height: 350px;
-    }
-
-    .posts-anteriores {
-        background: #F4F4F4;
-        width: 400px;
-        height: 802px;
-    }
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.headbar {
+    background: #184B89;
+    width: 100%;
+    height: 73px;
 }
 
-    @media (min-width: 48em){
-        .container {
-            display: block;
-            margin-left: 60px;
-            width: 100%;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif,
-        }
-    }   
+.header {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
 
-    a {
-        color: #184B89;
-        font-weight: bold;
-    }
-    .date-hora {
-        color: #184B89;
-        font-weight: bold;
-    }
+.nav-logo {
+    padding-top: 26px;
+    padding-left: 64px;
+}
 
-    .titulo-post {
-        width: 700px;
-        background: #00FFBA;
-        padding-bottom: 53px;
-        text-align: center;
-    }
+.menu ul>li {
+    padding: 4px;
+    display: inline-block;
+}
 
-    .titulo {
-        color: #005CA9;
-        align-content: center;
-        text-align: center;
-        position: relative;
-    }
+a {
+    color: #184B89;
+    font-weight: bold;
+}
 
-    .img-post>img {
-        float: left;
-        max-width: 265px;
-        max-height: 174px;
-    }
+.date-hora {    
+    color: #184B89;
+    font-weight: bold;
+}
 
-    .corpo-post {
-        text-align: justify;
-        height: 115px;
-        max-width: 700px;
-    }
+.titulo-post {
+    width: 700px;
+    background: #00FFBA;
+    padding-bottom: 53px;
+    text-align: center;
+}
 
-    .form {}
+.titulo {
+    color: #005CA9;
+    align-content: center;
+    text-align: center;
+    position: relative;
+}
 
-    .footer {}
+.img-post>img {
+    float: left;
+    max-width: 265px;
+    max-height: 174px;
+}
 
-    .nav-logo {
-        padding-top: 26px;
-        padding-left: 64px;
-    }
+.corpo-post>p {
+    padding-top: 20px;
+    text-align: justify;
+    height: 115px;
+    max-width: 700px;
+}
 
-    .menu ul>li {
-        padding: 4px;
-        display: inline-block;
-    }
+.leia-mais {
+    padding-top: 60px;
+    color: #005CA9
+}
+
