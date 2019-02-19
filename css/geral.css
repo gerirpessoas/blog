@@ -11,7 +11,7 @@
     height: 73px;
 }
 
-.header {
+.header{    
     padding-top: 40px;
     padding-bottom: 40px;
 }
@@ -21,20 +21,41 @@ a {
     font-weight: bold;
 }
 
+.btn-primary-first {
+    font-family: Khand !important;
+    font-weight: bold !important;
+    color: #fff;
+    background-color: #184B89 !important;
+    border-color: #184B89 !important;
+}
+
+.btn-primary {
+    font-family: Khand !important;
+    font-weight: bold !important;
+    color: #184B89 !important;
+    background-color: #00FFBA !important;
+    border-color: #00FFBA !important;
+}
+
 .date-hora {
     padding-bottom: 10px;
     color: #184B89;
     font-weight: bold;
 }
 
-.titulo-post {
+.titulo-post {    
+    text-align: justify;    
     width: 700px;
     background: #00FFBA;
     padding-bottom: 53px;
     text-align: center;
 }
 
-.titulo {
+.titulo {    
+    font-family: Khand !important;
+    font-weight: bold !important;
+    text-align: justify;
+    font-size: 32px;
     color: #005CA9;
     align-content: center;
     text-align: center;
@@ -48,6 +69,7 @@ a {
 }
 
 .corpo-post>p {
+    font-family: 'Times New Roman', Times, serif, Roboto;
     padding-top: 20px;
     text-align: justify;
     height: 115px;
