@@ -13,6 +13,8 @@
         height: 369.16px;
     }
 
+    @media (min-width: 48em){
+
     .nav-bar-left {
         float: right;
     }
@@ -34,6 +36,7 @@
         width: 400px;
         height: 802px;
     }
+}
 
     @media (min-width: 48em){
         .container {
