@@ -25,6 +25,12 @@ a {
     color: #184B89;
     font-weight: bold;
 }
+.container {
+    width: auto !important;
+    display: block;
+    margin-left: 40px !important;
+    width: 100% !important;
+}
 
 .date-hora {    
     color: #184B89;
