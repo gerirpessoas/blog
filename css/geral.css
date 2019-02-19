@@ -1,3 +1,10 @@
+/* Estilo cor do menu */
+
+.nav-logo {
+    padding-top: 26px;
+    padding-left: 200px;
+}
+
 .headbar {
     background: #184B89;
     width: 100%;
@@ -9,22 +16,13 @@
     padding-bottom: 40px;
 }
 
-.nav-logo {
-    padding-top: 26px;
-    padding-left: 64px;
-}
-
-.menu ul>li {
-    padding: 4px;
-    display: inline-block;
-}
-
 a {
     color: #184B89;
     font-weight: bold;
 }
 
 .date-hora {
+    padding-bottom: 10px;
     color: #184B89;
     font-weight: bold;
 }
@@ -58,6 +56,7 @@ a {
 
 .leia-mais {
     padding-top: 60px;
+    padding-bottom: 20px;
     color: #005CA9
 }
 
