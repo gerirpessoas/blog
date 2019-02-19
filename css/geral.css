@@ -106,7 +106,6 @@
 h1 {
     font-family: Khand !important;
     font-weight: bold !important;
-    
 }
 
 .titulo-form-lead {
@@ -120,11 +119,11 @@ h1 {
     line-height: 1.5px;
 }
 
-.container-fluid { 
+.container-fluid {
     position: relative;
-    width: 100%;
-    padding-bottom: 10px;   
+    width: 70%;
+    padding-bottom: 10px;
     display: block;
-    background-color: #00FFBA;    
+    background-color: #00FFBA;
+    clear: both;
 }
-
