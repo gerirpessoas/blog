@@ -11,14 +11,16 @@
     height: 73px;
 }
 
-.header{    
+.header {
     padding-top: 40px;
     padding-bottom: 40px;
 }
 
-a {
-    color: #184B89;
+.leia, .a {
+    font-family: Khand !important;
+    font-weight: bold !important;
     font-weight: bold;
+    color: #184B89;
 }
 
 .btn-primary-first {
@@ -43,15 +45,17 @@ a {
     font-weight: bold;
 }
 
-.titulo-post {    
-    text-align: justify;    
+.titulo-post {
+    font-family: Khand !important;
+    font-weight: bold !important;
+    text-align: justify;
     width: 700px;
     background: #00FFBA;
     padding-bottom: 53px;
     text-align: center;
 }
 
-.titulo {    
+.titulo {
     font-family: Khand !important;
     font-weight: bold !important;
     text-align: justify;
@@ -77,9 +81,10 @@ a {
 }
 
 .leia-mais {
-    padding-top: 60px;
-    padding-bottom: 20px;
-    color: #005CA9
+    color: #184B89;
+    font-weight: bold;
+    padding-top: 40px;
+    padding-bottom: 0px;
 }
 
 .side-bar-right {
