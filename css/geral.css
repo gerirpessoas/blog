@@ -13,9 +13,11 @@
         height: 369.16px;
     }
 
-    @media (min-width: 48em){
+@media (min-width: 48em){
 
     .nav-bar-left {
+        padding-left: 20px;
+        display: block;
         float: right;
     }
 
