@@ -72,6 +72,10 @@
     max-height: 174px;
 }
 
+.container {
+    padding-bottom: 40px;
+}
+
 .corpo-post>p {
     font-family: 'Times New Roman', Times, serif, Roboto;
     padding-top: 20px;
@@ -92,3 +96,35 @@
     margin-left: 40px;
     padding-top: 40px;
 }
+
+.container-fluid-flex {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+h1 {
+    font-family: Khand !important;
+    font-weight: bold !important;
+    
+}
+
+.titulo-form-lead {
+    font-family: Khand;
+    font-weight: bold;
+    color: #005CA9;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 1.5px;
+}
+
+.container-fluid { 
+    position: relative;
+    width: 100%;
+    padding-bottom: 10px;   
+    display: block;
+    background-color: #00FFBA;    
+}
+
