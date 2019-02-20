@@ -6,7 +6,7 @@
 }
 
 .headbar {
-    background: #184B89;        
+    background: #184B89;
     height: 73px;
 }
 
@@ -118,11 +118,16 @@ h1 {
     line-height: 1.5px;
 }
 
-.container-fluid {
-    position: relative;
-    width: 70%;
+.container-fluid-green, .titulo-form-lead {
+    display: flex;
+    flex-direction: row;    
+    flex-wrap: wrap;
     padding-bottom: 10px;
-    display: block;
     background-color: #00FFBA;
-    clear: both;
+}
+
+.wrapper {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
 }
