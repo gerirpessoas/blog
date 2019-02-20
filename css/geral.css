@@ -51,13 +51,14 @@
     background: #00FFBA;
     height: 149.48px;
     text-align: justify;
+    width: 100%;
 }
 
 .titulo {
     font-family: Khand !important;
     font-weight: bold !important;
     text-align: justify;
-    font-size: 32px;
+    font-size: 10px;
     color: #005CA9;
     align-content: center;
     text-align: center;
@@ -83,7 +84,7 @@
     padding-bottom: 0px;
 }
 
-h1 {   
+h1 {      
     font-family: Khand !important;
     font-weight: bold !important;
 }
