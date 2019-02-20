@@ -118,16 +118,10 @@ h1 {
     line-height: 1.5px;
 }
 
-.container-fluid-green, .titulo-form-lead {
+.container-fluid-green{
     display: flex;
     flex-direction: row;    
     flex-wrap: wrap;
     padding-bottom: 10px;
     background-color: #00FFBA;
-}
-
-.wrapper {
-    max-width: 900px;
-    width: 100%;
-    margin: 0 auto;
 }
