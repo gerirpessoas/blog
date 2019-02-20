@@ -10,7 +10,7 @@
     height: 73px;
 }
 
-.header {
+.slide {
     padding-top: 40px;
     padding-bottom: 40px;
 }
@@ -47,11 +47,10 @@
 .titulo-post {
     font-family: Khand !important;
     font-weight: bold !important;
-    text-align: justify;
-    width: 700px;
+    text-align: justify;    
     background: #00FFBA;
-    padding-bottom: 53px;
-    text-align: center;
+    height: 149.48px;
+    text-align: justify;
 }
 
 .titulo {
@@ -62,7 +61,7 @@
     color: #005CA9;
     align-content: center;
     text-align: center;
-    position: relative;
+    
 }
 
 .img-post>img {
@@ -71,16 +70,10 @@
     max-height: 174px;
 }
 
-.container {
-    padding-bottom: 40px;
-}
-
 .corpo-post>p {
     font-family: 'Times New Roman', Times, serif, Roboto;
     padding-top: 20px;
-    text-align: justify;
-    height: 115px;
-    max-width: 700px;
+    text-align: justify;    
 }
 
 .leia-mais {
@@ -90,22 +83,11 @@
     padding-bottom: 0px;
 }
 
-.side-bar-right {
-    padding-top: 80px;
-    margin-left: 40px;
-    padding-top: 40px;
-}
-
-.container-fluid-flex {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-}
-
-h1 {
+h1 {   
     font-family: Khand !important;
     font-weight: bold !important;
 }
+
 
 .titulo-form-lead {
     font-family: Khand;
@@ -113,15 +95,9 @@ h1 {
     color: #005CA9;
     padding-top: 20px;
     padding-bottom: 0px;
-    text-align: center;
+    align-content: center;    
     font-size: 25px;
-    line-height: 1.5px;
+    
 }
 
-.container-fluid-green{
-    display: flex;
-    flex-direction: row;    
-    flex-wrap: wrap;
-    padding-bottom: 10px;
-    background-color: #00FFBA;
-}
+
