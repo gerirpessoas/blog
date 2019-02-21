@@ -9,7 +9,21 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-134910297-1');
-</script>
+</script>  
+               
+<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-functions.js"></script>
+
+<!-- Comment out (or don't include) services that you don't want to use -->
+<!-- <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-storage.js"></script> -->
+    
     <title>Gestão de pessoas na empresa: como ela pode lhe gerar lucros | Gerir Pessoas</title>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/geral.css">
@@ -22,7 +36,151 @@
     
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+         <script>
+    
+    /**
+ * Get the user IP throught the webkitRTCPeerConnection
+ * @param onNewIP {Function} listener function to expose the IP locally
+ * @return undefined
+ */
+function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
+    //compatibility for firefox and chrome
+    var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+    var pc = new myPeerConnection({
+        iceServers: []
+    }),
+    noop = function() {},
+    localIPs = {},
+    ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
+    key;
 
+    function iterateIP(ip) {
+        if (!localIPs[ip]) onNewIP(ip);
+        localIPs[ip] = true;
+    }
+
+     //create a bogus data channel
+    pc.createDataChannel("");
+
+    // create offer and set local description
+    pc.createOffer().then(function(sdp) {
+        sdp.sdp.split('\n').forEach(function(line) {
+            if (line.indexOf('candidate') < 0) return;
+            line.match(ipRegex).forEach(iterateIP);
+        });
+        
+        pc.setLocalDescription(sdp, noop, noop);
+    }).catch(function(reason) {
+        // An error occurred, so handle the failure to connect
+    });
+
+    //listen for candidate events
+    pc.onicecandidate = function(ice) {
+        if (!ice || !ice.candidate || !ice.candidate.candidate || !ice.candidate.candidate.match(ipRegex)) return;
+        ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
+    };
+}
+
+    
+    
+    var config = {
+    apiKey: "AIzaSyCHYcb95pkiVQw5hi0XPIYwMtBu40F9R2Y",
+    authDomain: "gerirpessoas-xp17.firebaseapp.com",
+    databaseURL: "https://gerirpessoas-xp17.firebaseio.com",
+    projectId: "gerirpessoas-xp17",
+    storageBucket: "gerirpessoas-xp17.appspot.com",
+    messagingSenderId: "390208837263"
+  };
+              
+  firebase.initializeApp(config); 
+  function writeNewLead(vNome, vEmail, vTipo, vData, vIp) {
+    // A post entry.
+    var postData = {
+      nome: vNome,
+      email: vEmail,
+      tipo: vTipo,
+      data: vData,
+      ip: vIp
+    };
+  
+    console.log(postData);
+    
+    // Get a key for a new Post.
+    var newPostKey = firebase.database().ref().child('leads').push().key;
+  
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    var updates = {};
+    updates['/leads/' + newPostKey] = postData;
+    
+    return firebase.database().ref().update(updates);
+  }        
+      
+    function leadBanner(frm){
+    
+        try{
+          
+          nome = frm.txtBannerNome.value;
+          email = frm.txtBannerEmail.value;
+          numfunc = frm.txtBannerNumFuncionarios.value;
+          taxa = frm.txtBannerTaxaRotatividade.value;
+          
+          writeNewLead(nome,email,numfunc,taxa,"IP");
+          
+        }catch(e){  
+        
+            alert("+"+e);
+            
+        }
+    
+    }
+    
+     
+    function leadBanner(frm){
+    
+        try{
+          
+          nome = frm.txtBannerNome.value;
+          email = frm.txtBannerEmail.value;
+          tipo = 'B2?';
+          numfunc = frm.txtBannerNumFuncionarios.value;
+          taxa = frm.txtBannerTaxaRotatividade.value;
+          data = document.getElementById('txtDataHora').value;
+          ip = document.getElementById('txtIP').value;
+          
+          writeNewLead(nome,email,tipo,data,ip);
+          
+        }catch(e){  
+        
+            alert("+"+e);
+            
+        }
+    
+    }
+    
+    
+    function leadNews(frm){
+    
+        try{
+          
+          nome = frm.txtNome.value;
+          email = frm.txtEmail.value;
+            
+          tipo = 'B2?';          
+          data = document.getElementById('txtDataHora').value;
+          ip = document.getElementById('txtIP').value;
+          
+          writeNewLead(nome,email,tipo,data,ip);
+          
+        }catch(e){  
+        
+            alert("+"+e);
+            
+        }
+    
+    }
+    
+    
+    </script>     
 </head>
 
 <body>
@@ -144,14 +302,16 @@
                 <!--Fim Post numero 1-->
             </div>
             <!--FINAL DIV COLUNA 1-->
-
+         
+<input type="hidden" id="txtIP" />
+<input type="hidden" id="txtDataHora" />
             <!--Linha 1 Coluna 2 RIGHT BAR-->
             <div class="col-sm-4">
-                <form>
+                <form id="form-newsletter">
                     <div class="form-group" style="max-width:314px;">
                         <input type="text" class="form-control" id="txtNome" placeholder="Nome:"><br />
                         <input type="email" class="form-control" id="txtEmail" placeholder="Email:"><br />
-                        <button type="button" class="btn btn-primary-first btn-lg btn-block" style="max-width:314px;">RECEBA NOSSO CONTEÚDO</button>
+                        <button type="button" class="btn btn-primary-first btn-lg btn-block" style="max-width:314px;" onclick="javascript:leadNews(document.getElementById('form-newsletter'));">RECEBA NOSSO CONTEÚDO</button>
                     </div>
                 </form>
 
@@ -191,6 +351,7 @@
         
         
         
+        
         <!--
         ####    ####    ####    ####    ####    
         
@@ -203,7 +364,7 @@
         ####    
                 Última Alteração Em:
         ####    
-                21/02/2019 às 03:23 (Diego)
+                21/02/2019 às 06:39 (Diego)
         ####    
         
         ####    ####    ####    ####    ####    
@@ -233,7 +394,7 @@
            
                         <div class="popup-form">
                         
-                            <form method="POST" action="javascript:;" onsubmit="javascript:return false();">
+                            <form id="form-banner" method="POST" action="javascript:;" onsubmit="javascript:return false();">
                                 <div class="form-group" style="max-width:314px;">
                                 
                                 <input type="text" class="form-control" id="txtBannerNome" placeholder="Nome completo" />
@@ -244,7 +405,7 @@
                                 
                                 <input type="text" class="form-control" id="txtBannerTaxaRotatividade" placeholder="Taxa de rotatividade*" />
                                 
-                                <button type="button" class="btn btn-primary-first btn-lg btn-block">RECEBER GR&Aacute;TIS</button>
+                                <button type="button" class="btn btn-primary-first btn-lg btn-block" onclick="javascript:leadBanner(document.getElementById('form-banner'));">RECEBER GR&Aacute;TIS</button>
                               </div>
                           </form>
                           
@@ -291,10 +452,35 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-</script>
-    <!--Div COntainer-->
 
-    <!--Div COntainer-->
+// Usage
+
+getUserIP(function(ip){
+    //alert("Got IP! :" + ip);
+    
+    document.getElementById('txtIP').value += ip + " ";
+});
+</script>
+
+<script type="application/javascript">
+  function getIP(json) {
+    try{
+    
+        document.getElementById('txtDataHora').value = (new Date()).toLocaleDateString('en-US');
+                
+        document.getElementById('txtIP').value += json.ip + " ";
+    
+    }catch(e){  
+    
+        alert("+"+e);
+        
+    }
+  }
+  
+
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
 </body>
 
 </html>

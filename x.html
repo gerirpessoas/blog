@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-functions.js"></script>
+
+<!-- Comment out (or don't include) services that you don't want to use -->
+<!-- <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-storage.js"></script> -->
+
+
+<script>
+
+
+  var config = {
+    apiKey: "AIzaSyCHYcb95pkiVQw5hi0XPIYwMtBu40F9R2Y",
+    authDomain: "gerirpessoas-xp17.firebaseapp.com",
+    databaseURL: "https://gerirpessoas-xp17.firebaseio.com",
+    projectId: "gerirpessoas-xp17",
+    storageBucket: "gerirpessoas-xp17.appspot.com",
+    messagingSenderId: "390208837263"
+  };
+firebase.initializeApp(config);
+               
+
+console.log(firebase.app().name);  // "[DEFAULT]"
+console.log(firebase.app().name);  // "[DEFAULT]"
+console.log(firebase.app());  // "[DEFAULT]"
+function writeNewLead(vNome, vEmail, vTipo, vData, vIp) {
+  // A post entry.
+  var postData = {
+    nome: vNome,
+    email: vEmail,
+    tipo: vTipo,
+    data: vData,
+    ip: vIp
+  };
+
+  // Get a key for a new Post.
+  var newPostKey = firebase.database().ref().child('leads').push().key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  var updates = {};
+  updates['/leads/' + newPostKey] = postData;
+  
+  return firebase.database().ref().update(updates);
+}
+
+writeNewLead('vNome', 'vEmail', 'vTipo', 'vData', 'vIp');
+
+</script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+
+
+</head>
+<body>
+
+</body>
+</html>

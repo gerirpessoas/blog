@@ -26,3 +26,33 @@ function includeHTML() {
     }
   }
 }
+
+
+  var config = {
+    apiKey: "AIzaSyCHYcb95pkiVQw5hi0XPIYwMtBu40F9R2Y",
+    authDomain: "gerirpessoas-xp17.firebaseapp.com",
+    databaseURL: "https://gerirpessoas-xp17.firebaseio.com",
+    projectId: "gerirpessoas-xp17",
+    storageBucket: "gerirpessoas-xp17.appspot.com",
+    messagingSenderId: "390208837263"
+  };
+firebase.initializeApp(config); 
+function writeNewLead(vNome, vEmail, vTipo, vData, vIp) {
+  // A post entry.
+  var postData = {
+    nome: vNome,
+    email: vEmail,
+    tipo: vTipo,
+    data: vData,
+    ip: vIp
+  };
+
+  // Get a key for a new Post.
+  var newPostKey = firebase.database().ref().child('leads').push().key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  var updates = {};
+  updates['/leads/' + newPostKey] = postData;
+  
+  return firebase.database().ref().update(updates);
+}
