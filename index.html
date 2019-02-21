@@ -199,7 +199,7 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
                     <a class="navbar-brand" href="#" style="font-family: 'KhandBold';font-size:18px;color:#fff; " onclick="javascript:document.getElementById('txtNome').focus();" >Assine a Newsletter</a>
                     <a class="navbar-brand" href="https://www.instagram.com/gerirpessoas/" target="_blank" style="font-family: 'KhandBold';font-size:18px; color:#fff; padding-left: 10px;">Siga no Instagram</a>
                     <a class="navbar-brand" href="#" style="font-family: 'KhandBold';font-size:18px;  padding-left: 0px;">
-                        <button class="btn btn-success" style="font-family: 'KhandBold';font-size:18px;background-color:#00FFBA;color:#005CA9" onclick="javascript:try{document.getElementById('txtEbookNome').focus();}catch(e){alert(e);}">Baixe o nosso e-book</button>
+                        <a name="#ebook">  <button class="btn btn-success" style="font-family: 'KhandBold';font-size:18px;background-color:#00FFBA;color:#005CA9" onclick="javascript:try{document.getElementById('txtEbookNome').focus();}catch(e){alert(e);}">Baixe o nosso e-book</button></a> 
                     </a>
                 </li>
             </ul>
@@ -328,7 +328,7 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
             <div class="col" style="background-color:#00FFBA;">
                 <h1 class="titulo-form-lead">Baixe nosso ebook e melhore a gestão da sua equipe</h1>
                 <form id="form-ebook">
-                    <input type="text" id="txtEbookNome" class="form-control" placeholder="Nome"><br />
+                    <a href="#ebook"><input type="text" id="txtEbookNome" class="form-control" placeholder="Nome"></a><br />
                     <input type="email" id="txtEbookEmail" cclass="form-control" placeholder="E-mail"> <br />
                     <button type=" button" class="btn btn-primary-first btn-lg btn-block" onclick="javascript:leadEbook(document.getElementById('form-ebook'));">BAIXE GRATUITAMENTE O E-BOOK</button>
                 </form>
