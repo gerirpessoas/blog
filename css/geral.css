@@ -169,7 +169,7 @@ button {
                       
 
 /* The Modal (background) */
-.modal {
+.popup {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -185,28 +185,102 @@ button {
 }
 
 /* Modal Content */
-.modal-content {
+.popup-content {
   background-color: #43ACA9 !important;
   color:#f9f9f9 !important;
   margin: auto;
-  border: 1px solid #888;
   width: 80%;
   font-family: 'Roboto';
   font-size: 36px;
 }
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.popup-content > p {
+
+    font-size:36px;
+    font-family: 'Roboto'; 
+    color:#f9f9f9;
+
+}
+.popup p span {
+    max-width:300px;
+    display:block;
+    margin-top:15px;
+    font-size:30px;
+    font-family: 'Roboto'; 
+    color:#f9f9f9;
+
 }
 
-.close:hover,
-.close:focus {
+.popup button {
+    font-family:'Khand';
+    font-size:22px;
+    padding:0px;
+    max-height:40px;
+    min-height:40px;
+    width:100%;
+    margin:4px;
+}
+
+
+
+
+
+.popup-btn-close {
+
+    padding-right:25px;
+    padding-top:10px;
+    padding-bottom:0px;
+    margin:0px;
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    
+}
+
+
+.popup-btn-close:hover,
+
+.popup-btn-close:focus {
+
   color: #000;
   text-decoration: none;
   cursor: pointer;
+  
 }
 
+
+input:focus {
+
+  font-weight:bold; 
+  background-color: #00FFBA !important;
+  color:#005CA9 !important;
+  
+}
+
+input {
+            
+  font-weight:none;
+  background-color: #f9f9f !important;
+  color:#F1F1F2 !important;
+  
+}
+
+.popup-form {
+
+    padding-top:30px!important;
+
+}
+.popup-form .form-group .form-control {
+    margin:5px;
+
+}
+
+.popup-content {
+
+    max-width:400px;
+    margin:10px;
+    padding-top:10px;
+    padding-left:30px;
+    
+}

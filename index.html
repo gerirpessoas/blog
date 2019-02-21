@@ -21,9 +21,8 @@
     <meta name="description" content="Existem diversas maneiras de contratar uma pessoa" />
     <link rel="canonical" href="https://gerirpessoas.com/a-importancia-de-uma-cultura-organizacional-na-sua-empresa/" />
     <meta property="og:title" content="Veja como aumentar a produtividade da sua empresa página do post" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
         
 </head>
 
@@ -153,60 +152,91 @@
     </div>
 
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content" style="max-width:883px;">
-    <span align="right" class="close" style="padding-right:25px;padding-top:10px;padding-bottom:0px;margin:0px;">&times;</span>
-    <p>
-        <div style="display:flex;flex-direction:row;flex-wrap:wrap;">    
-        <div style="max-width:350px;margin:25px !important;margin-top:5px !important;">
-            <p style="font-size:36px !important;font-family: 'Roboto' !important; color:#f9f9f9; ">
-Quanto custa a <b>rotatividade</b> em sua empresa?
-            </p>
-            <p style="font-size:30px !important;font-family: 'Roboto' !important; color:#f9f9f9;">
-Saiba como reduzi-la!
-            </p>
-            <p style="font-size:16px !important;font-family: 'Roboto' !important; color:#f9f9f9;">
-Descubra quais são os prejuízos gerados por contratações erradas em sua empresa e o que fazer para evita-los
-            </p>
-        </div>    
-        <div style="">
-            <form>
-                <div class="form-group" style="max-width:314px;">
-                  <input type="text" class="form-control" id="txtBannerNome" placeholder="Nome:" style="margin:4px;">
-                  <input type="email" class="form-control" id="txtBannerEmail" placeholder="Email:" style="margin:4px;">
-                  <input type="text" class="form-control" id="txtBannerNumFuncionarios" placeholder="Número de funcionários" style="margin:4px;">
-                  <input type="text" class="form-control" id="txtBannerTaxaRotatividade" placeholder="Taxa de rotatividade*" style="margin:4px;">
-                  <button type="button" class="btn btn-primary-first btn-lg btn-block" style="font-family:Khand !important;font-size:14px !important;padding:0px;max-height:26px;max-width:63px;margin:4px;">ENVIAR</button>
+        <!--
+        ####    ####    ####    ####    ####    
+        
+        ####    POPUP VOADOR  001       ####
+        
+        ####    ####    ####    ####    ####    
+        
+        ####
+                Criado em 20/02/2019 23:15  (Diego)            
+        ####    
+                Última Alteração Em:
+        ####    
+                21/02/2019 às 03:23 (Diego)
+        ####    
+        
+        ####    ####    ####    ####    ####    
+        
+        -->
+                                          
+        <div class="popup" id="banner-01">
+        
+            <div class="popup-content" style="max-width:883px;">
+            
+                <span class="popup-btn-close" align="right">&times;</span>
+                
+                    <div style="display:flex;flex-direction:row;flex-wrap:wrap;">    
+                        
+                        <div class="popup-content">
+                            
+                            <p>Quanto custa a <b>rotatividade</b> em sua empresa?
+                            
+                                <span>Saiba como reduzi-la!</span>
+                                
+                                <span style="font-size:16px;">Descubra quais são os prejuízos gerados por contratações erradas em sua empresa e o que fazer para evita-los</span>
+                                
+                            </p>
+                                  
+                        </div>
+                          
+           
+                        <div class="popup-form">
+                        
+                            <form method="POST" action="javascript:;" onsubmit="javascript:return false();">
+                                <div class="form-group" style="max-width:314px;">
+                                
+                                <input type="text" class="form-control" id="txtBannerNome" placeholder="Nome completo" />
+                                
+                                <input type="email" class="form-control" id="txtBannerEmail" placeholder="Email" />
+                                
+                                <input type="text" class="form-control" id="txtBannerNumFuncionarios" placeholder="Número de funcionários" />
+                                
+                                <input type="text" class="form-control" id="txtBannerTaxaRotatividade" placeholder="Taxa de rotatividade*" />
+                                
+                                <button type="button" class="btn btn-primary-first btn-lg btn-block">RECEBER GR&Aacute;TIS</button>
+                              </div>
+                          </form>
+                          
+                        <p>
+                        
+                            <span style="font-size:14px;">*se você não sabe sua taxa de rotatividade da sua empresa, utilize a média brasileira: 43,1%</span>
+                            
+                        </p>
+                        
+                    </div>
+                    
                 </div>
-            </form>
-            <p style="color:#f9f9f9;font-family: 'Roboto' !important;font-weight:none !important;font-size:12px !important;padding:0px;max-height:26px;max-width:306px;margin:4px;">
-            *se você não sabe sua taxa de rotatividade da sua empresa, utilize a média brasileira: 43,1%
-            </p>
+                
+            </div>
+            
         </div>
-    
-    
-    </p>
-  </div>
 
-</div>
-</div>
-
-<!-- END The Modal -->
+        <!--
+        ####    ####    ####    ####    ####    
+        
+        ####    FIM DO POPUP VOADOR 01  ####
+        
+        ####    ####    ####    ####    ####    
+        -->
 
 <script>
-// Get the modal
-var modal = document.getElementById('myModal');
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var modal = document.getElementById('banner-01');
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("popup-btn-close")[0];
 
-// When the user clicks the button, open the modal 
 window.onload = function() {
   modal.style.display = "block";
 }
@@ -223,6 +253,8 @@ window.onclick = function(event) {
   }
 }
 </script>
+    <!--Div COntainer-->
+
     <!--Div COntainer-->
 </body>
 
