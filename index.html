@@ -64,12 +64,14 @@
 
     <script>
 
+        function baixaEbook() {
+            window.open('https://www.gerirpessoas.com/eBook_ShowMeTheLeads.pdf');
+        }
         /**
      * Get the user IP throught the webkitRTCPeerConnection
      * @param onNewIP {Function} listener function to expose the IP locally
      * @return undefined
      */
-
         function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
             //compatibility for firefox and chrome
             var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
@@ -121,7 +123,12 @@
 
         firebase.initializeApp(config);
         function writeNewLead(vNome, vEmail, vTipo, vData, vIp) {
-
+            
+            if (nome == '' || email == ''){
+                alert("CUIDADO! \n\nPREENCHA OS DADOS NOME E EMAIL ANTES DE CONTINUAR.");
+                return false;
+            }
+        
             // A post entry.
             var postData = {
                 nome: vNome,
@@ -133,18 +140,15 @@
 
             console.log(postData);
 
-            alert("Obrigado!");//" por baixar, se não abrir em nova aba, desbloqueie a POP-UP");
-
             // Get a key for a new Post.
             var newPostKey = firebase.database().ref().child('leads').push().key;
 
             // Write the new post's data simultaneously in the posts list and the user's post list.
             var updates = {};
             updates['/leads/' + newPostKey] = postData;
-            
             return firebase.database().ref().update(updates);
         }
-
+        
         function leadEbook(frm) {
 
             try {
@@ -155,8 +159,18 @@
                 data = document.getElementById('txtDataHora').value;
                 ip = document.getElementById('txtIP').value;
 
-                writeNewLead(nome, email, tipo, data, ip);
-
+                if (writeNewLead(nome, email, tipo, data, ip)){
+                    frm.txtEbookNome.value = '';
+                    frm.txtEbookEmail.value = '';
+                    try{ 
+                        baixaEbook();
+                        alert("Obrigado.");
+                    }catch(e){
+                        alert("Verifique o bloqueador de popups e tente novamente.");
+                    }                    
+                }else{
+                    frm.txtEbookNome.focus();                
+                }
             } catch (e) {
 
                 alert("+" + e);
@@ -179,13 +193,25 @@
                 data = document.getElementById('txtDataHora').value;
                 ip = document.getElementById('txtIP').value;
 
-                writeNewLead(nome, email, tipo, data, ip);
+               
+               
+                if (writeNewLead(nome, email, tipo, data, ip)){
+                    frm.txtBannerNome.value = '';
+                    frm.txtBannerEmail.value = ''; 
+                    frm.txtBannerNumFuncionarios.value = ''; 
+                    frm.txtBannerTaxaRotatividade.value = ''; 
+                }else{
+                    frm.txtBannerNome.focus();                
+                }
 
             } catch (e) {
 
                 alert("+" + e);
+
             }
+
         }
+
 
         function leadNews(frm) {
 
@@ -198,9 +224,13 @@
                 data = document.getElementById('txtDataHora').value;
                 ip = document.getElementById('txtIP').value;
 
-                writeNewLead(nome, email, tipo, data, ip);
-
-
+               
+                if (writeNewLead(nome, email, tipo, data, ip)){
+                    frm.txtNome.value = '';
+                    frm.txtEmail.value = ''; 
+                }else{
+                    frm.txtNome.focus();                
+                }
 
             } catch (e) {
 
@@ -210,6 +240,34 @@
 
         }
 
+        
+        function leadDisc(frm) {
+
+            try {
+
+                nome = frm.txtDiscNome.value;
+                email = frm.txtDiscEmail.value;
+
+                tipo = 'B2?';
+                data = document.getElementById('txtDataHora').value;
+                ip = document.getElementById('txtIP').value;
+
+                if (writeNewLead(nome, email, tipo, data, ip)){
+                    frm.txtDiscNome.value = '';
+                    frm.txtDiscEmail.value = ''; 
+                }else{
+                    frm.txtDiscNome.focus();                
+                }
+                
+
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+
+        }
 
     </script>
 </head>
@@ -407,8 +465,7 @@
         <!--Imagem esquerda 2-->
         <img src="images/teste-dic.jpg" width="314px" height="177px" class="img-responsive"
             alt="Responsive image"><br /><br />
-        <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;">FAÇA O TESTE
-            DISC</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;"><a href="teste-disc.html">FAÇA O TESTE DISC</a></button>
 
 
     </div>
