@@ -105,6 +105,8 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
   
     console.log(postData);
     
+    alert("Obrigado!");
+    
     // Get a key for a new Post.
     var newPostKey = firebase.database().ref().child('leads').push().key;
   

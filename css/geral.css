@@ -189,7 +189,7 @@ button {
   background-color: #43ACA9 !important;
   color:#f9f9f9 !important;
   margin: auto;
-  width: 80%;
+  width: 90%;
   font-family: 'Roboto';
   font-size: 36px;
 }
@@ -282,6 +282,6 @@ input {
     max-width:400px;
     margin:10px;
     padding-top:10px;
-    padding-left:30px;
+    padding-left:10px;
     
 }
