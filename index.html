@@ -62,6 +62,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!--Fim META TAGS-->
 
+    
     <script>
 
         function baixaEbook() {
@@ -199,7 +200,8 @@
                     frm.txtBannerNome.value = '';
                     frm.txtBannerEmail.value = ''; 
                     frm.txtBannerNumFuncionarios.value = ''; 
-                    frm.txtBannerTaxaRotatividade.value = ''; 
+                    frm.txtBannerTaxaRotatividade.value = '';
+                    alert("Obrigado."); 
                 }else{
                     frm.txtBannerNome.focus();                
                 }
@@ -227,7 +229,8 @@
                
                 if (writeNewLead(nome, email, tipo, data, ip)){
                     frm.txtNome.value = '';
-                    frm.txtEmail.value = ''; 
+                    frm.txtEmail.value = '';
+                    alert("Obrigado."); 
                 }else{
                     frm.txtNome.focus();                
                 }
@@ -254,7 +257,9 @@
 
                 if (writeNewLead(nome, email, tipo, data, ip)){
                     frm.txtDiscNome.value = '';
-                    frm.txtDiscEmail.value = ''; 
+                    frm.txtDiscEmail.value = '';
+                    alert("Lembre-se de desbloquear o pop-up para iniciar o teste!");
+                    window.open('https://blog.runrun.it/teste-disc-que-estilo-de-profissional-e-voce/'); 
                 }else{
                     frm.txtDiscNome.focus();                
                 }

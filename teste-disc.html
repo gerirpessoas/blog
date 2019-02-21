@@ -200,7 +200,8 @@
                     frm.txtBannerNome.value = '';
                     frm.txtBannerEmail.value = ''; 
                     frm.txtBannerNumFuncionarios.value = ''; 
-                    frm.txtBannerTaxaRotatividade.value = ''; 
+                    frm.txtBannerTaxaRotatividade.value = '';
+                    alert("Obrigado."); 
                 }else{
                     frm.txtBannerNome.focus();                
                 }
@@ -228,7 +229,8 @@
                
                 if (writeNewLead(nome, email, tipo, data, ip)){
                     frm.txtNome.value = '';
-                    frm.txtEmail.value = ''; 
+                    frm.txtEmail.value = '';
+                    alert("Obrigado."); 
                 }else{
                     frm.txtNome.focus();                
                 }
