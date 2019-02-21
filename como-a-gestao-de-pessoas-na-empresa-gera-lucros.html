@@ -73,9 +73,7 @@
      * @return undefined
      */
 
-        function baixaEbook() {
-            window.open('https://www.gerirpessoas.com/eBook_ShowMeTheLeads.pdf');
-        }
+        
 
         function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
             //compatibility for firefox and chrome
@@ -147,8 +145,7 @@
             // Write the new post's data simultaneously in the posts list and the user's post list.
             var updates = {};
             updates['/leads/' + newPostKey] = postData;
-            confirm("Para baixar o ebook, clique em OK." + baixaEbook());
-
+            
             return firebase.database().ref().update(updates);
         }
 
