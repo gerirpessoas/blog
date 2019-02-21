@@ -1,189 +1,196 @@
 <html>
-                                                              
-<head>        
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134910297-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-134910297-1');
-</script>
-               
-<!-- Firebase App is always required and must be first -->
-<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134910297-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-<!-- Add additional services that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-messaging.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-functions.js"></script>
+        gtag('config', 'UA-134910297-1');
+    </script>
 
-<!-- Comment out (or don't include) services that you don't want to use -->
-<!-- <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-storage.js"></script> -->
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-functions.js"></script>
+
+    <!-- Comment out (or don't include) services that you don't want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-storage.js"></script> -->
     <title>Cultura Organizacional: a import&acirc;ncia na sua empresa | Gerir Pessoas</title>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/geral.css">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Leia esse post e saiba como uma cultura organizacional forte é capaz de melhorar os resultados da sua empresa e motivar a sua equipe." />
+    <meta name="description"
+        content="Leia esse post e saiba como uma cultura organizacional forte é capaz de melhorar os resultados da sua empresa e motivar a sua equipe." />
     <link rel="canonical" href="https://gerirpessoas.com/a-importancia-de-uma-cultura-organizacional-na-sua-empresa/" />
-    <meta property="og:title" content="Leia esse post e saiba como uma cultura organizacional forte é capaz de melhorar os resultados da sua empresa e motivar a sua equipe." />
-    
+    <meta property="og:title"
+        content="Leia esse post e saiba como uma cultura organizacional forte é capaz de melhorar os resultados da sua empresa e motivar a sua equipe." />
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <script>
-    
-    /**
- * Get the user IP throught the webkitRTCPeerConnection
- * @param onNewIP {Function} listener function to expose the IP locally
- * @return undefined
- */
-function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
-    //compatibility for firefox and chrome
-    var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
-    var pc = new myPeerConnection({
-        iceServers: []
-    }),
-    noop = function() {},
-    localIPs = {},
-    ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
-    key;
 
-    function iterateIP(ip) {
-        if (!localIPs[ip]) onNewIP(ip);
-        localIPs[ip] = true;
-    }
+        /**
+     * Get the user IP throught the webkitRTCPeerConnection
+     * @param onNewIP {Function} listener function to expose the IP locally
+     * @return undefined
+     */
 
-     //create a bogus data channel
-    pc.createDataChannel("");
-
-    // create offer and set local description
-    pc.createOffer().then(function(sdp) {
-        sdp.sdp.split('\n').forEach(function(line) {
-            if (line.indexOf('candidate') < 0) return;
-            line.match(ipRegex).forEach(iterateIP);
-        });
-        
-        pc.setLocalDescription(sdp, noop, noop);
-    }).catch(function(reason) {
-        // An error occurred, so handle the failure to connect
-    });
-
-    //listen for candidate events
-    pc.onicecandidate = function(ice) {
-        if (!ice || !ice.candidate || !ice.candidate.candidate || !ice.candidate.candidate.match(ipRegex)) return;
-        ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
-    };
-}
-
-    
-    
-    var config = {
-    apiKey: "AIzaSyCHYcb95pkiVQw5hi0XPIYwMtBu40F9R2Y",
-    authDomain: "gerirpessoas-xp17.firebaseapp.com",
-    databaseURL: "https://gerirpessoas-xp17.firebaseio.com",
-    projectId: "gerirpessoas-xp17",
-    storageBucket: "gerirpessoas-xp17.appspot.com",
-    messagingSenderId: "390208837263"
-  };
-              
-  firebase.initializeApp(config); 
-  function writeNewLead(vNome, vEmail, vTipo, vData, vIp) {
-    // A post entry.
-    var postData = {
-      nome: vNome,
-      email: vEmail,
-      tipo: vTipo,
-      data: vData,
-      ip: vIp
-    };
-  
-    console.log(postData);
-    
-    alert("Obrigado!");
-    
-    // Get a key for a new Post.
-    var newPostKey = firebase.database().ref().child('leads').push().key;
-  
-    // Write the new post's data simultaneously in the posts list and the user's post list.
-    var updates = {};
-    updates['/leads/' + newPostKey] = postData;
-    
-    return firebase.database().ref().update(updates);
-  }        
-      
-    function leadBanner(frm){
-    
-        try{
-          
-          nome = frm.txtBannerNome.value;
-          email = frm.txtBannerEmail.value;
-          tipo = 'B2?';
-          numfunc = frm.txtBannerNumFuncionarios.value;
-          taxa = frm.txtBannerTaxaRotatividade.value;
-          data = document.getElementById('txtDataHora').value;
-          ip = document.getElementById('txtIP').value;
-          
-          writeNewLead(nome,email,tipo,data,ip);
-          
-        }catch(e){  
-        
-            alert("+"+e);
-            
+        function baixaEbook() {
+            window.open('https://www.gerirpessoas.com/eBook_ShowMeTheLeads.pdf');
         }
-    
-    }
-    
-    function leadEbook(frm){
-    
-        try{
-          
-          nome = frm.txtEbookNome.value;
-          email = frm.txtEbookEmail.value;
-          tipo = 'B2?';
-          data = document.getElementById('txtDataHora').value;
-          ip = document.getElementById('txtIP').value;
-          
-          writeNewLead(nome,email,tipo,data,ip);
-          
-        }catch(e){  
-        
-            alert("+"+e);
-            
+        function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
+            //compatibility for firefox and chrome
+            var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+            var pc = new myPeerConnection({
+                iceServers: []
+            }),
+                noop = function () { },
+                localIPs = {},
+                ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
+                key;
+
+            function iterateIP(ip) {
+                if (!localIPs[ip]) onNewIP(ip);
+                localIPs[ip] = true;
+            }
+
+            //create a bogus data channel
+            pc.createDataChannel("");
+
+            // create offer and set local description
+            pc.createOffer().then(function (sdp) {
+                sdp.sdp.split('\n').forEach(function (line) {
+                    if (line.indexOf('candidate') < 0) return;
+                    line.match(ipRegex).forEach(iterateIP);
+                });
+
+                pc.setLocalDescription(sdp, noop, noop);
+            }).catch(function (reason) {
+                // An error occurred, so handle the failure to connect
+            });
+
+            //listen for candidate events
+            pc.onicecandidate = function (ice) {
+                if (!ice || !ice.candidate || !ice.candidate.candidate || !ice.candidate.candidate.match(ipRegex)) return;
+                ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
+            };
         }
-    
-    }
-    
-    
-    function leadNews(frm){
-    
-        try{
-          
-          nome = frm.txtNome.value;
-          email = frm.txtEmail.value;
-            
-          tipo = 'B2?';          
-          data = document.getElementById('txtDataHora').value;
-          ip = document.getElementById('txtIP').value;
-          
-          writeNewLead(nome,email,tipo,data,ip);
-          
-        }catch(e){  
-        
-            alert("+"+e);
-            
+
+
+
+        var config = {
+            apiKey: "AIzaSyCHYcb95pkiVQw5hi0XPIYwMtBu40F9R2Y",
+            authDomain: "gerirpessoas-xp17.firebaseapp.com",
+            databaseURL: "https://gerirpessoas-xp17.firebaseio.com",
+            projectId: "gerirpessoas-xp17",
+            storageBucket: "gerirpessoas-xp17.appspot.com",
+            messagingSenderId: "390208837263"
+        };
+
+        firebase.initializeApp(config);
+        function writeNewLead(vNome, vEmail, vTipo, vData, vIp) {
+            // A post entry.
+            var postData = {
+                nome: vNome,
+                email: vEmail,
+                tipo: vTipo,
+                data: vData,
+                ip: vIp
+            };
+
+            console.log(postData);
+
+            alert("Obrigado!");
+
+            // Get a key for a new Post.
+            var newPostKey = firebase.database().ref().child('leads').push().key;
+
+            // Write the new post's data simultaneously in the posts list and the user's post list.
+            var updates = {};
+            updates['/leads/' + newPostKey] = postData;
+            confirm("Para baixar o ebook, clique em OK." + baixaEbook());
+
+            return firebase.database().ref().update(updates);
         }
-    
-    }
-    
-    
+       
+        function leadBanner(frm) {
+
+            try {
+
+                nome = frm.txtBannerNome.value;
+                email = frm.txtBannerEmail.value;
+                tipo = 'B2?';
+                numfunc = frm.txtBannerNumFuncionarios.value;
+                taxa = frm.txtBannerTaxaRotatividade.value;
+                data = document.getElementById('txtDataHora').value;
+                ip = document.getElementById('txtIP').value;
+
+                writeNewLead(nome, email, tipo, data, ip);
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+
+        }
+
+        function leadEbook(frm) {
+
+            try {
+
+                nome = frm.txtEbookNome.value;
+                email = frm.txtEbookEmail.value;
+                tipo = 'B2?';
+                data = document.getElementById('txtDataHora').value;
+                ip = document.getElementById('txtIP').value;
+
+                writeNewLead(nome, email, tipo, data, ip);
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+
+        }
+
+
+        function leadNews(frm) {
+
+            try {
+
+                nome = frm.txtNome.value;
+                email = frm.txtEmail.value;
+
+                tipo = 'B2?';
+                data = document.getElementById('txtDataHora').value;
+                ip = document.getElementById('txtIP').value;
+
+                writeNewLead(nome, email, tipo, data, ip);
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+
+        }
+
+
     </script>
-    
-    
+
+
 </head>
 
 <body>
@@ -196,18 +203,27 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="navbar-brand" href="http://www.gerirpessoas.com" style="font-family: 'Roboto';font-weight:bold;font-size:22px;color:#fff; padding-left: 0px;margin-right:25px;">Blog Sobre RH e Gestão de Pessoas</a>
-                    <a class="navbar-brand" href="#" style="font-family: 'KhandBold';font-size:18px;color:#fff; " onclick="javascript:document.getElementById('txtNome').focus();" >Assine a Newsletter</a>
-                    <a class="navbar-brand" href="https://www.instagram.com/gerirpessoas/" target="_blank" style="font-family: 'KhandBold';font-size:18px; color:#fff; padding-left: 10px;">Siga no Instagram</a>
-                    <a class="navbar-brand" href="#" style="font-family: 'KhandBold';font-size:18px;  padding-left: 0px;">
-                        <button class="btn btn-success" style="font-family: 'KhandBold';font-size:18px;background-color:#00FFBA;color:#005CA9" onclick="javascript:try{document.getElementById('txtEbookNome').focus();}catch(e){alert(e);}">Baixe o nosso e-book</button>
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="http://www.gerirpessoas.com"
+                            style="font-family: 'Roboto';font-weight:bold;font-size:22px;color:#fff; padding-left: 0px;margin-right:25px;">Blog
+                            Sobre RH e Gestão de Pessoas</a>
+                        <a class="navbar-brand" href="#" style="font-family: 'KhandBold';font-size:18px;color:#fff; "
+                            onclick="javascript:document.getElementById('txtNome').focus();">Assine a Newsletter</a>
+                        <a class="navbar-brand" href="https://www.instagram.com/gerirpessoas/" target="_blank"
+                            style="font-family: 'KhandBold';font-size:18px; color:#fff; padding-left: 10px;">Siga no
+                            Instagram</a>
+                        <a class="navbar-brand" href="#"
+                            style="font-family: 'KhandBold';font-size:18px;  padding-left: 0px;">
+                            <button class="btn btn-success"
+                                style="font-family: 'KhandBold';font-size:18px;background-color:#00FFBA;color:#005CA9"
+                                onclick="javascript:try{document.getElementById('txtEbookNome').focus();}catch(e){alert(e);}">Baixe
+                                o nosso e-book</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <!--Estrutra Post 1-->
         <div class="row" style="padding-top:30px;">
@@ -218,23 +234,28 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
                     <img src="images/logo.jpg" width="230px" height="80px" />
                 </div>
                 <!--Fim Div logo-->
-                
 
-                <hr style="height:1px; border:none; color:#005CA9; background-color:#000; margin-top: 0px;  margin-top: 20px; width: 100%;" />
+
+                <hr
+                    style="height:1px; border:none; color:#005CA9; background-color:#000; margin-top: 0px;  margin-top: 20px; width: 100%;" />
 
                 <div class="date-hora">20 DE FEV. | 15H30</div>
 
                 <!--Corpo do POST-->
                 <div class="corpo-post">
-                
-                <div style="display:flex;flex-direction:row;flex-wrap:wrap;background:#f9f9f9">
+
+                    <div style="display:flex;flex-direction:row;flex-wrap:wrap;background:#f9f9f9">
                         <div>
-                        <img src="images/a-importancia-de-uma-cultura-organizacional-na-sua-empresa.jpg" style="width:265px;" alt="A IMPORT&Acirc;NCIA DE UMA CULTURA ORGANIZACIONAL NA SUA EMPRESA" />
-                        
+                            <img src="images/a-importancia-de-uma-cultura-organizacional-na-sua-empresa.jpg"
+                                style="width:265px;"
+                                alt="A IMPORT&Acirc;NCIA DE UMA CULTURA ORGANIZACIONAL NA SUA EMPRESA" />
+
                         </div>
-                        <div style="max-width:427px;background-color: #00FFBA;color: #005CA9;"><h1>A IMPORT&Acirc;NCIA DE UMA CULTURA ORGANIZACIONAL NA SUA EMPRESA</h1></div>
+                        <div style="max-width:427px;background-color: #00FFBA;color: #005CA9;">
+                            <h1>A IMPORT&Acirc;NCIA DE UMA CULTURA ORGANIZACIONAL NA SUA EMPRESA</h1>
+                        </div>
                     </div>
-                <!--
+                    <!--
                     <table>
                         <tr>
                             <td><img width="100%" style="min-width:255px;" src="images/a-importancia-de-uma-cultura-organizacional-na-sua-empresa.jpg" alt="saiba como uma cultura organizacional forte é capaz de melhorar os resultados da sua empresa e motivar a sua equipe." /></td>
@@ -243,8 +264,8 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
 
                     </table>
                     -->
-<input type="hidden" id="txtIP" />
-<input type="hidden" id="txtDataHora" />
+                    <input type="hidden" id="txtIP" />
+                    <input type="hidden" id="txtDataHora" />
 
                     <!--
                     <div class="titulo">
@@ -252,25 +273,52 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
                     </div>
                     -->
                     <p>
-Toda e qualquer empresa tem como mantra a sua cultura. Desde as mais tradicionais às recentes e inovadoras Startups. Quando se fala em <a href="como-a-gestao-de-pessoas-na-empresa-gera-lucros.html">gestão de pessoas em empresas</a>, uma coisa tem mudado bastante nos últimos tempos: a importância de ter uma cultura organizacional forte de toda equipe. Algo que vai muito além dos tradicionais quadros de missão, visão e valores que a gente sempre vê nas paredes de alguns escritórios.
+                        Toda e qualquer empresa tem como mantra a sua cultura. Desde as mais tradicionais às recentes e
+                        inovadoras Startups. Quando se fala em <a
+                            href="como-a-gestao-de-pessoas-na-empresa-gera-lucros.html">gestão de pessoas em
+                            empresas</a>, uma coisa tem mudado bastante nos últimos tempos: a importância de ter uma
+                        cultura organizacional forte de toda equipe. Algo que vai muito além dos tradicionais quadros de
+                        missão, visão e valores que a gente sempre vê nas paredes de alguns escritórios.
                     </p>
                     <p>
-Segundo consultoria americana Bersin by Deloitte, 87% de 1000 executivos C-level entrevistados consideram muito importante a cultura organizacional da empresa. Nas últimas décadas, <a href="https://qulture.rocks/blog/o-que-e-cultura-organizacional/" target="_blank">esse conceito está mudando</a>. Alguns estudiosos definiram cultura como um conjunto de normas e práticas que uma organização desenvolve. Como o conjunto de valores e crenças que uma empresa fala como sendo seus.
-                    </p>
-                    <p>                    
-É de extrema importância que uma equipe tenha em mente a cultura da empresa. Isso reflete diretamente nos resultados. E isso, por um motivo muito simples, mas negligenciado por muitas empresas: o propósito! Sim, pessoas diferentes, que têm objetivos claros e um mindsets semelhantes, são capazes de conseguirem excelentes resultados quando trabalham juntas.
+                        Segundo consultoria americana Bersin by Deloitte, 87% de 1000 executivos C-level entrevistados
+                        consideram muito importante a cultura organizacional da empresa. Nas últimas décadas, <a
+                            href="https://qulture.rocks/blog/o-que-e-cultura-organizacional/" target="_blank">esse
+                            conceito está mudando</a>. Alguns estudiosos definiram cultura como um conjunto de normas e
+                        práticas que uma organização desenvolve. Como o conjunto de valores e crenças que uma empresa
+                        fala como sendo seus.
                     </p>
                     <p>
-A cultura também é muito presente no momento de recrutamento de novos talentos. Ou seja, saber quais perfis de candidatos se adequam mais a esse mindset coletivo é fundamental para que os futuros aprovados nos processos seletivos não tenham dificuldades de adaptação e causem conflitos.
+                        É de extrema importância que uma equipe tenha em mente a cultura da empresa. Isso reflete
+                        diretamente nos resultados. E isso, por um motivo muito simples, mas negligenciado por muitas
+                        empresas: o propósito! Sim, pessoas diferentes, que têm objetivos claros e um mindsets
+                        semelhantes, são capazes de conseguirem excelentes resultados quando trabalham juntas.
                     </p>
                     <p>
-Jon Katzenbach, diretor da PwC e especialista em estratégias empresariais resumiu cultura organizacional. Disse que cultura organizacional é "feita de hábitos e respostas emocionais, a cultura de uma empresa é a soma dos padrões de comportamento, sentimento, pensamento e <b>crenças que seu autorreforçam</b> e que <b>determinam a forma como fazemos as coisas aqui</b>.”
+                        A cultura também é muito presente no momento de recrutamento de novos talentos. Ou seja, saber
+                        quais perfis de candidatos se adequam mais a esse mindset coletivo é fundamental para que os
+                        futuros aprovados nos processos seletivos não tenham dificuldades de adaptação e causem
+                        conflitos.
                     </p>
-                    <p> 
-Ter uma cultura forte em sua empresa é um dos principais segredos para o seu crescimento. E estabelecer isso não é uma tarefa fácil. <a href="https://abstartups.com.br/2016/11/17/por-que-a-cultura-organizacional-e-importante-na-sua-startup/" target="_blank">As Startups já perceberam que isso é fundamental</a> e fazem o possível para que esse mantra seja como um manual a ser seguido pelos seus membros.
+                    <p>
+                        Jon Katzenbach, diretor da PwC e especialista em estratégias empresariais resumiu cultura
+                        organizacional. Disse que cultura organizacional é "feita de hábitos e respostas emocionais, a
+                        cultura de uma empresa é a soma dos padrões de comportamento, sentimento, pensamento e
+                        <b>crenças que seu autorreforçam</b> e que <b>determinam a forma como fazemos as coisas
+                            aqui</b>.”
                     </p>
-                    <p> 
-Aqui na Gerir Pessoas, ajudamos empresas a mapear e identificar quais são essas características. Aquelas principais que devem ser reforçadas em seus colaboradores. Conheça nossas ferramentas e materiais gratuitos (inserir um link que vai para a página em que se encontrarão os conteúdos)! Comece agora a implantar uma cultura organizacional que levará sua empresa ao próximo nível!
+                    <p>
+                        Ter uma cultura forte em sua empresa é um dos principais segredos para o seu crescimento. E
+                        estabelecer isso não é uma tarefa fácil. <a
+                            href="https://abstartups.com.br/2016/11/17/por-que-a-cultura-organizacional-e-importante-na-sua-startup/"
+                            target="_blank">As Startups já perceberam que isso é fundamental</a> e fazem o possível para
+                        que esse mantra seja como um manual a ser seguido pelos seus membros.
+                    </p>
+                    <p>
+                        Aqui na Gerir Pessoas, ajudamos empresas a mapear e identificar quais são essas características.
+                        Aquelas principais que devem ser reforçadas em seus colaboradores. Conheça nossas ferramentas e
+                        materiais gratuitos (inserir um link que vai para a página em que se encontrarão os conteúdos)!
+                        Comece agora a implantar uma cultura organizacional que levará sua empresa ao próximo nível!
                     </p>
 
 
@@ -287,7 +335,10 @@ Aqui na Gerir Pessoas, ajudamos empresas a mapear e identificar quais são essas
                     <div class="form-group" style="max-width:314px;">
                         <input type="text" class="form-control" id="txtNome" placeholder="Nome:"><br />
                         <input type="email" class="form-control" id="txtEmail" placeholder="Email:"><br />
-                        <button type="button" class="btn btn-primary-first btn-lg btn-block" style="max-width:314px;" onclick="javascript:leadNews(document.getElementById('form-newsletter'));">RECEBA NOSSO CONTEÚDO</button>
+                        <button type="button" class="btn btn-primary-first btn-lg btn-block" style="max-width:314px;"
+                            onclick="javascript:leadNews(document.getElementById('form-newsletter'));">RECEBA
+                            NOSSO
+                            CONTEÚDO</button>
                     </div>
                 </form>
 
@@ -295,16 +346,18 @@ Aqui na Gerir Pessoas, ajudamos empresas a mapear e identificar quais são essas
 
                 <hr />
 
-                <img src="images/ebook.png" class="img-responsive"
-                    alt="Responsive image" style="max-width:314px;"><br /><br />
-                <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;">BAIXE O E-BOOK</button>
+                <img src="images/ebook.png" class="img-responsive" alt="Responsive image"
+                    style="max-width:314px;"><br /><br />
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;">BAIXE O
+                    E-BOOK</button>
 
                 <hr />
 
                 <!--Imagem esquerda 2-->
                 <img src="images/teste-dic.jpg" width="314px" height="177px" class="img-responsive"
                     alt="Responsive image"><br /><br />
-                <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;">FAÇA O TESTE DISC</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;">FAÇA O TESTE
+                    DISC</button>
 
 
             </div>
@@ -317,17 +370,20 @@ Aqui na Gerir Pessoas, ajudamos empresas a mapear e identificar quais são essas
                 <form id="form-ebook">
                     <input type="text" id="txtEbookNome" class="form-control" placeholder="Nome"><br />
                     <input type="email" id="txtEbookEmail" cclass="form-control" placeholder="E-mail"> <br />
-                    <button type=" button" class="btn btn-primary-first btn-lg btn-block" onclick="javascript:leadEbook(document.getElementById('form-ebook'));">BAIXE GRATUITAMENTE O E-BOOK</button>
+                    <button type=" button" class="btn btn-primary-first btn-lg btn-block"
+                        onclick="javascript:leadEbook(document.getElementById('form-ebook'));">BAIXE
+                        GRATUITAMENTE O
+                        E-BOOK</button>
                 </form>
             </div>
         </div>
     </div>
-       
-         
-        
-        
-        
-        <!--
+
+
+
+
+
+    <!--
         ####    ####    ####    ####    ####    
         
         ####    POPUP VOADOR  001       ####
@@ -345,60 +401,66 @@ Aqui na Gerir Pessoas, ajudamos empresas a mapear e identificar quais são essas
         ####    ####    ####    ####    ####    
         
         -->
-                                          
-        <div class="popup" id="banner-01">
-        
-            <div class="popup-content" style="max-width:883px;">
-            
-                <span class="popup-btn-close" align="right">&times;</span>
-                
-                    <div style="display:flex;flex-direction:row;flex-wrap:wrap;">    
-                        
-                        <div class="popup-content">
-                            
-                            <p>Quanto custa a <b>rotatividade</b> em sua empresa?
-                            
-                                <span>Saiba como reduzi-la!</span>
-                                
-                                <span style="font-size:16px;">Descubra quais são os prejuízos gerados por contratações erradas em sua empresa e o que fazer para evita-los</span>
-                                
-                            </p>
-                                  
-                        </div>
-                          
-           
-                        <div class="popup-form">
-                        
-                            <form id="form-banner" method="POST" action="javascript:;" onsubmit="javascript:return false();">
-                                <div class="form-group" style="max-width:314px;">
-                                
-                                <input type="text" class="form-control" id="txtBannerNome" placeholder="Nome completo" />
-                                
-                                <input type="email" class="form-control" id="txtBannerEmail" placeholder="Email" />
-                                
-                                <input type="text" class="form-control" id="txtBannerNumFuncionarios" placeholder="Número de funcionários" />
-                                
-                                <input type="text" class="form-control" id="txtBannerTaxaRotatividade" placeholder="Taxa de rotatividade*" />
-                                
-                                <button type="button" class="btn btn-primary-first btn-lg btn-block" onclick="javascript:leadBanner(document.getElementById('form-banner'));">RECEBER GR&Aacute;TIS</button>
-                              </div>
-                          </form>
-                          
-                        <p>
-                        
-                            <span style="font-size:14px;">*se você não sabe sua taxa de rotatividade da sua empresa, utilize a média brasileira: 43,1%</span>
-                            
-                        </p>
-                        
-                    </div>
-                    
+
+    <div class="popup" id="banner-01">
+
+        <div class="popup-content" style="max-width:883px;">
+
+            <span class="popup-btn-close" align="right">&times;</span>
+
+            <div style="display:flex;flex-direction:row;flex-wrap:wrap;">
+
+                <div class="popup-content">
+
+                    <p>Quanto custa a <b>rotatividade</b> em sua empresa?
+
+                        <span>Saiba como reduzi-la!</span>
+
+                        <span style="font-size:16px;">Descubra quais são os prejuízos gerados por contratações erradas
+                            em sua empresa e o que fazer para evita-los</span>
+
+                    </p>
+
                 </div>
-                
+
+
+                <div class="popup-form">
+
+                    <form id="form-banner" method="POST" action="javascript:;" onsubmit="javascript:return false();">
+                        <div class="form-group" style="max-width:314px;">
+
+                            <input type="text" class="form-control" id="txtBannerNome" placeholder="Nome completo" />
+
+                            <input type="email" class="form-control" id="txtBannerEmail" placeholder="Email" />
+
+                            <input type="text" class="form-control" id="txtBannerNumFuncionarios"
+                                placeholder="Número de funcionários" />
+
+                            <input type="text" class="form-control" id="txtBannerTaxaRotatividade"
+                                placeholder="Taxa de rotatividade*" />
+
+                            <button type="button" class="btn btn-primary-first btn-lg btn-block"
+                                onclick="javascript:leadBanner(document.getElementById('form-banner'));">RECEBER
+                                GR&Aacute;TIS</button>
+                        </div>
+                    </form>
+
+                    <p>
+
+                        <span style="font-size:14px;">*se você não sabe sua taxa de rotatividade da sua empresa, utilize
+                            a média brasileira: 43,1%</span>
+
+                    </p>
+
+                </div>
+
             </div>
-            
+
         </div>
 
-        <!--
+    </div>
+
+    <!--
         ####    ####    ####    ####    ####    
         
         ####    FIM DO POPUP VOADOR 01  ####
@@ -406,57 +468,57 @@ Aqui na Gerir Pessoas, ajudamos empresas a mapear e identificar quais são essas
         ####    ####    ####    ####    ####    
         -->
 
-<script>
+    <script>
 
-var modal = document.getElementById('banner-01');
+        var modal = document.getElementById('banner-01');
 
-var span = document.getElementsByClassName("popup-btn-close")[0];
+        var span = document.getElementsByClassName("popup-btn-close")[0];
 
-window.onload = function() {
-  modal.style.display = "block";
-}
+        window.onload = function () {
+            modal.style.display = "block";
+        }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
 
 
-// Usage
+        // Usage
 
-getUserIP(function(ip){
-    //alert("Got IP! :" + ip);
-    
-    document.getElementById('txtIP').value += ip + " ";
-});
-</script>
+        getUserIP(function (ip) {
+            //alert("Got IP! :" + ip);
 
-<script type="application/javascript">
-  function getIP(json) {
-    try{
-    
-        document.getElementById('txtDataHora').value = (new Date()).toLocaleDateString('en-US');
-                
-        document.getElementById('txtIP').value += json.ip + " ";
-    
-    }catch(e){  
-    
-        alert("+"+e);
-        
-    }
-  }
-  
+            document.getElementById('txtIP').value += ip + " ";
+        });
+    </script>
 
-</script>
+    <script type="application/javascript">
+        function getIP(json) {
+            try {
 
-<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+                document.getElementById('txtDataHora').value = (new Date()).toLocaleDateString('en-US');
+
+                document.getElementById('txtIP').value += json.ip + " ";
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+        }
+
+
+    </script>
+
+    <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
 </body>
 
 </html>
