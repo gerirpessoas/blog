@@ -23,18 +23,16 @@
 
     <!-- Comment out (or don't include) services that you don't want to use -->
     <!-- <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-storage.js"></script> -->
-    <title>Cultura Organizacional: a import&acirc;ncia na sua empresa | Gerir Pessoas</title>
+
+    <title>Gestão de pessoas na empresa: O que é Turnover?</title>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/geral.css">
+
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <!-- Required meta tags -->
-    <meta name="title" content="A importância de uma cultura organizacional na sua empresa" />
-    <meta name="keywords"
-        content='gestão de pessoas em empresas, cultura da empresa, recrutamento de talentos, Gerir Pessoas' />
+    <meta name="title" content="Gestão de pessoas na empresa: O que é Turnover?" />
+    <meta name="keywords" content='gestão de pessoas, rh, turnover, turnover nas empresas, medir turnover' />
     <meta name="author" content='Gerir Pessoas - http://www.gerirpessoas.com' />
-    <meta name="url"
-        content='http://www.gerirpessoas.com/a-importancia-de-uma-cultura-organizacional-na-sua-empresa.html' />
+    <meta name="url" content='http://www.gerirpessoas.com' />
     <meta name="copyright" content='Copyright (c) 2019 Gerir Pessoas' />
 
     <meta name="HandheldFriendly" content="True">
@@ -42,35 +40,47 @@
 
     <meta http-equiv="cleartype" content="on">
     <link rel="canonical" href="https://gerirpessoas.com/" />
-    <meta name="DC.title" content='A importância de uma cultura organizacional na sua empresa' />
+    <meta name="DC.title" content='Gestão de pessoas na empresa: O que é Turnover' />
     <meta name="DC.identifier" content='gerirpessoas.com' />
     <meta name="DC.description"
-        content='Toda e qualquer empresa tem como mantra a sua cultura. Desde as mais tradicionais às recentes e inovadoras Startups. Quando se fala em gestão de pessoas em empresas' />
+        content='O maior patrimônio de toda empresa está nos colaboradores. Por isso a gestão de pessoas da sua empresa é fundamental. Mas há algo que todo empreendedor deveria ter em mente, os custos de turnover nas empresas.' />
     <meta name="DC.subject" content='gestão de pessoas, rh, turnover, turnover nas empresas, medir turnover' />
     <meta name="DC.language" scheme="ISO639-1" content="en" />
     <meta name="DC.creator" content='https://gerirpessoas.com/' />
 
     <meta name="DCTERMS.created" scheme="ISO8601" content="2019-02-19" />
-    <meta property="og:title" content='Blog Gerir Pessoas | A importância de uma cultura organizacional na sua empresa' />
+    <meta property="og:title" content='Blog Gerir Pessoas - Gestão de pessoas na empresa: O que é Turnover?' />
     <meta property="og:type" content="blog" />
     <meta property="og:url" content='https://gerirpessoas.com/' />
     <meta property="og:image" content='https://gerirpessoas.com/images/turnover.jpg' />
     <meta property="og:site_name" content='Blog Gerir Pessoas - Gestão de Pessoas' />
     <meta property="og:description"
-        content='Toda e qualquer empresa tem como mantra a sua cultura. Desde as mais tradicionais às recentes e inovadoras Startups. Quando se fala em gestão de pessoas em empresas' />
+        content='O maior patrimônio de toda empresa está nos colaboradores. Por isso a gestão de pessoas da sua empresa é fundamental. Mas há algo que todo empreendedor deveria ter em mente, os custos de turnover nas empresas.' />
     <link rel="SHORTCUT ICON" href="https://www.gerirpessoas.com/images/favicon.ico" />
+
+    <!--FIm meta names-->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Turnover nas empresas: Tudo que você precisa saber | Gerir Pessoas" />
+    <!--Colocar meta keywords-->
+    <link rel="canonical" href="https://gerirpessoas.com/" />
+
+    <meta property="og:title" content="Turnover nas empresas: Tudo que você precisa saber | Gerir Pessoas" />
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <script>
 
+        function baixaEbook() {
+            window.open('https://www.gerirpessoas.com/eBook_ShowMeTheLeads.pdf');
+        }
         /**
      * Get the user IP throught the webkitRTCPeerConnection
      * @param onNewIP {Function} listener function to expose the IP locally
      * @return undefined
      */
-
-        function baixaEbook() {
-            window.open('https://www.gerirpessoas.com/eBook_ShowMeTheLeads.pdf');
-        }
         function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
             //compatibility for firefox and chrome
             var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
@@ -133,8 +143,6 @@
 
             console.log(postData);
 
-            alert("Obrigado!");
-
             // Get a key for a new Post.
             var newPostKey = firebase.database().ref().child('leads').push().key;
 
@@ -142,9 +150,29 @@
             var updates = {};
             updates['/leads/' + newPostKey] = postData;
             confirm("Para baixar o ebook, clique em OK." + baixaEbook());
-
             return firebase.database().ref().update(updates);
         }
+
+        function leadBanner(frm) {
+
+            try {
+
+                nome = frm.txtBannerNome.value;
+                email = frm.txtBannerEmail.value;
+                numfunc = frm.txtBannerNumFuncionarios.value;
+                taxa = frm.txtBannerTaxaRotatividade.value;
+
+                writeNewLead(nome, email, numfunc, taxa, "IP");
+
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+
+        }
+
 
         function leadBanner(frm) {
 
@@ -160,25 +188,6 @@
 
                 writeNewLead(nome, email, tipo, data, ip);
 
-            } catch (e) {
-
-                alert("+" + e);
-
-            }
-
-        }
-
-        function leadEbook(frm) {
-
-            try {
-
-                nome = frm.txtEbookNome.value;
-                email = frm.txtEbookEmail.value;
-                tipo = 'B2?';
-                data = document.getElementById('txtDataHora').value;
-                ip = document.getElementById('txtIP').value;
-
-                writeNewLead(nome, email, tipo, data, ip);
 
             } catch (e) {
 
@@ -202,6 +211,7 @@
 
                 writeNewLead(nome, email, tipo, data, ip);
 
+
             } catch (e) {
 
                 alert("+" + e);
@@ -212,8 +222,6 @@
 
 
     </script>
-
-
 </head>
 
 <body>
@@ -262,96 +270,87 @@
                 <hr
                     style="height:1px; border:none; color:#005CA9; background-color:#000; margin-top: 0px;  margin-top: 20px; width: 100%;" />
 
-                <div class="date-hora">20 DE FEV. | 15H30</div>
+                <div class="date-hora">21 DE FEV. | 12H30</div>
 
                 <!--Corpo do POST-->
                 <div class="corpo-post">
 
                     <div style="display:flex;flex-direction:row;flex-wrap:wrap;background:#f9f9f9">
                         <div>
-                            <img src="images/a-importancia-de-uma-cultura-organizacional-na-sua-empresa.jpg"
-                                style="width:265px;"
-                                alt="A IMPORT&Acirc;NCIA DE UMA CULTURA ORGANIZACIONAL NA SUA EMPRESA" />
+                            <img src="images/turnover.jpg" style="width:300px;"
+                                alt="Mulher segurando uma mala | Gestão de empresa" />
 
                         </div>
                         <div style="max-width:427px;background-color: #00FFBA;color: #005CA9;">
-                            <h1>A IMPORT&Acirc;NCIA DE UMA CULTURA ORGANIZACIONAL NA SUA EMPRESA</h1>
+
+                            <h1>O que é turnover nas empresas?</h1>
+
                         </div>
                     </div>
-                    <!--
-                    <table>
-                        <tr>
-                            <td><img width="100%" style="min-width:255px;" src="images/a-importancia-de-uma-cultura-organizacional-na-sua-empresa.jpg" alt="saiba como uma cultura organizacional forte é capaz de melhorar os resultados da sua empresa e motivar a sua equipe." /></td>
-                            <td class="titulo-post"><p>A import&acirc;ncia de uma cultura organizacional na sua empresa</p></td>
-                        </tr>
+                    <p>
+                        O maior patrimônio de toda empresa está nos colaboradores. Por isso a gestão de pessoas da sua
+                        empresa é fundamental. Mas há algo que todo empreendedor deveria ter em mente, os custos de
+                        turnover nas empresas.
+                    </p>
+                    <h2>O que turnover?</h2>
+                    <p>
+                        É basicamente o movimento no qual um funcionário é substituído por um novo colaborador. Essa
+                        simples demissão impacta em vários setores da empresa. Os custos de demitir, contratar e treinar
+                        um novo funcionário podem chegar até 9 salários daquele que foi demitido.
 
-                    </table>
-                    -->
-                    <input type="hidden" id="txtIP" />
-                    <input type="hidden" id="txtDataHora" />
+                    </p>
+                    <h2>Qual a sua importância?</h2>
+                    <p>
+                        A perda de pessoas significa perda de capital intelectual, de domínio dos processos, perda de
+                        conexões com os clientes e de mercado. Sintetizando, alto turnover nas empresas é sinônimo de
+                        perda de produtividade, de lucratividade e de saúde organizacional. Impacta na motivação das
+                        pessoas que acaba gerando ainda mais improdutividade, mais rotatividade e interferindo na
+                        credibilidade da sua empresa.
+                    </p>
+                    <h2>Por que e como medir o turnover?</h2>
+                    <p>
+                        Saber como calcular o turnover nas empresas é uma das melhores formas de avaliar a performance
+                        do setor de Recursos Humanos. Ao medir o volume de profissionais que deixam a empresa e demandam
+                        substituição, os gestores constroem uma ideia mais clara sobre as práticas do setor e traçam
+                        estratégias para melhorar esses resultados.
+                        Se você quer saber como calcular o turnover, é preciso aplicar a uma fórmula que soma as
+                        admissões com os desligamentos, divide o resultado por dois e, por fim, divide o resultado pelo
+                        número total de colaboradores da companhia, em um modelo assim: turnover geral = ([admissões
+                        mensais + desligamentos mensais] ÷ 2) ÷ total de funcionários.
 
-                    <!--
-                    <div class="titulo">
-                        <h1>AQUI ENTRA O TÍTULO DO POST 1</h1>
-                    </div>
-                    -->
-                    <p>
-                        Toda e qualquer empresa tem como mantra a sua cultura. Desde as mais tradicionais às recentes e
-                        inovadoras Startups. Quando se fala em <a
-                            href="como-a-gestao-de-pessoas-na-empresa-gera-lucros.html">gestão de pessoas em
-                            empresas</a>, uma coisa tem mudado bastante nos últimos tempos: a importância de ter uma
-                        cultura organizacional forte de toda equipe. Algo que vai muito além dos tradicionais quadros de
-                        missão, visão e valores que a gente sempre vê nas paredes de alguns escritórios.
                     </p>
+                    <h2>Custos do turnover</h2>
                     <p>
-                        Segundo consultoria americana Bersin by Deloitte, 87% de 1000 executivos C-level entrevistados
-                        consideram muito importante a cultura organizacional da empresa. Nas últimas décadas, <a
-                            href="https://qulture.rocks/blog/o-que-e-cultura-organizacional/" target="_blank">esse
-                            conceito está mudando</a>. Alguns estudiosos definiram cultura como um conjunto de normas e
-                        práticas que uma organização desenvolve. Como o conjunto de valores e crenças que uma empresa
-                        fala como sendo seus.
-                    </p>
-                    <p>
-                        É de extrema importância que uma equipe tenha em mente a cultura da empresa. Isso reflete
-                        diretamente nos resultados. E isso, por um motivo muito simples, mas negligenciado por muitas
-                        empresas: o propósito! Sim, pessoas diferentes, que têm objetivos claros e um mindsets
-                        semelhantes, são capazes de conseguirem excelentes resultados quando trabalham juntas.
-                    </p>
-                    <p>
-                        A cultura também é muito presente no momento de recrutamento de novos talentos. Ou seja, saber
-                        quais perfis de candidatos se adequam mais a esse mindset coletivo é fundamental para que os
-                        futuros aprovados nos processos seletivos não tenham dificuldades de adaptação e causem
-                        conflitos.
-                    </p>
-                    <p>
-                        Jon Katzenbach, diretor da PwC e especialista em estratégias empresariais resumiu cultura
-                        organizacional. Disse que cultura organizacional é "feita de hábitos e respostas emocionais, a
-                        cultura de uma empresa é a soma dos padrões de comportamento, sentimento, pensamento e
-                        <b>crenças que seu autorreforçam</b> e que <b>determinam a forma como fazemos as coisas
-                            aqui</b>.”
-                    </p>
-                    <p>
-                        Ter uma cultura forte em sua empresa é um dos principais segredos para o seu crescimento. E
-                        estabelecer isso não é uma tarefa fácil. <a
-                            href="https://abstartups.com.br/2016/11/17/por-que-a-cultura-organizacional-e-importante-na-sua-startup/"
-                            target="_blank">As Startups já perceberam que isso é fundamental</a> e fazem o possível para
-                        que esse mantra seja como um manual a ser seguido pelos seus membros.
-                    </p>
-                    <p>
-                        Aqui na Gerir Pessoas, ajudamos empresas a mapear e identificar quais são essas características.
-                        Aquelas principais que devem ser reforçadas em seus colaboradores. Conheça nossas ferramentas e
-                        materiais gratuitos (inserir um link que vai para a página em que se encontrarão os conteúdos)!
-                        Comece agora a implantar uma cultura organizacional que levará sua empresa ao próximo nível!
-                    </p>
+                        Um alto turnover compromete de forma grave as finanças de uma empresa. As razões são simples:
+                        Gastos com novas contratações e processos de seleção.
+                        Despesas trabalhistas de desligamento e contratação de funcionários.
+                        Gastos com treinamento e capacitação de colaboradores que ingressam na empresa.
+                        Quando um turnover tende a zero, você poderia elevar remunerações do seu quadro em quase 40% sem
+                        afetar seus resultados financeiros atuais.
 
+                        O custo indireto do turnover inclui a dificuldade de preencher as novas vagas. Isso soma-se o
+                        tempo no qual o cargo fica sem cobertura, necessitando do desvio de função de outros
+                        funcionários ou simplesmente reduzindo a produtividade geral em decorrência da inexistência de
+                        um ou mais profissionais.
 
+                        É extremamente importante que o setor de <a
+                            href="https://www.gerirpessoas.com/como-a-gestao-de-pessoas-na-empresa-gera-lucros.html">Gestão
+                            de Pessoas</a> da sua empresa esteja bem estruturado, saiba mensurar todos os gargalos e
+                        trace as
+                        melhores estratégias para reduzir os custos com turnover.
 
+                        Aqui na Gerir Pessoas, ajudamos empresas a reduzirem até 9 vezes os gastos com demissões.
+                        Conheça nossos serviços e melhore ainda mais a gestão de pessoas na sua empresa.
+
+                    </p>
 
                 </div>
                 <!--Fim Post numero 1-->
             </div>
             <!--FINAL DIV COLUNA 1-->
 
+            <input type="hidden" id="txtIP" />
+            <input type="hidden" id="txtDataHora" />
             <!--Linha 1 Coluna 2 RIGHT BAR-->
             <div class="col-sm-4">
                 <form id="form-newsletter">
@@ -359,8 +358,7 @@
                         <input type="text" class="form-control" id="txtNome" placeholder="Nome:"><br />
                         <input type="email" class="form-control" id="txtEmail" placeholder="Email:"><br />
                         <button type="button" class="btn btn-primary-first btn-lg btn-block" style="max-width:314px;"
-                            onclick="javascript:leadNews(document.getElementById('form-newsletter'));">RECEBA
-                            NOSSO
+                            onclick="javascript:leadNews(document.getElementById('form-newsletter'));">RECEBA NOSSO
                             CONTEÚDO</button>
                     </div>
                 </form>
@@ -390,17 +388,16 @@
         <div class="row" style=" padding-top: 20px;">
             <div class="col" style="background-color:#00FFBA;">
                 <h1 class="titulo-form-lead">Baixe nosso ebook e melhore a gestão da sua equipe</h1>
-                <form id="form-ebook">
+                <form name="" action="">
                     <input type="text" id="txtEbookNome" class="form-control" placeholder="Nome"><br />
                     <input type="email" id="txtEbookEmail" cclass="form-control" placeholder="E-mail"> <br />
-                    <button type=" button" class="btn btn-primary-first btn-lg btn-block"
-                        onclick="javascript:leadEbook(document.getElementById('form-ebook'));">BAIXE
-                        GRATUITAMENTE O
+                    <button type=" button" class="btn btn-primary-first btn-lg btn-block">BAIXE GRATUITAMENTE O
                         E-BOOK</button>
                 </form>
             </div>
         </div>
     </div>
+
 
 
 
@@ -512,7 +509,6 @@
                 modal.style.display = "none";
             }
         }
-
 
         // Usage
 

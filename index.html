@@ -28,21 +28,43 @@
     <link rel="stylesheet" type="text/css" href="css/geral.css">
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Existem diversas maneiras de contratar uma pessoa" />
-    <link rel="canonical" href="https://gerirpessoas.com/a-importancia-de-uma-cultura-organizacional-na-sua-empresa/" />
-    <meta property="og:title" content="Veja como aumentar a produtividade da sua empresa página do post" />
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    <script>
+    <meta name="title" content="Blog Gerir Pessoas - Tudo sobre gestão de pessoas" />
+    <meta name="keywords" content='gestão de pessoas, rh, turnover, cultura organizacional, Startups, gestão de pessoas' />
+    <meta name="author" content='Gerir Pessoas - http://www.gerirpessoas.com' />
+    <meta name="url" content='http://www.gerirpessoas.com' />
+    <meta name="copyright" content='Copyright (c) 2019 Gerir Pessoas' />
 
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta http-equiv="cleartype" content="on">
+    <link rel="canonical" href="https://gerirpessoas.com/" />
+    <meta name="DC.title" content='Gestão de pessoas na empresa: O que é Turnover' />
+    <meta name="DC.identifier" content='gerirpessoas.com' />
+    <meta name="DC.description"
+        content='O maior patrimônio de toda empresa está nos colaboradores. Por isso a gestão de pessoas da sua empresa é fundamental. Mas há algo que todo empreendedor deveria ter em mente, os custos de turnover nas empresas.' />
+    <meta name="DC.subject" content='gestão de pessoas, rh, turnover, cultura organizacional, Startups, gestão de pessoas' />
+    <meta name="DC.language" scheme="ISO639-1" content="en" />
+    <meta name="DC.creator" content='https://gerirpessoas.com/' />
+
+    <meta name="DCTERMS.created" scheme="ISO8601" content="2019-02-19" />
+    <meta property="og:title" content='Blog Gerir Pessoas | Tudo sobre gestão em um só lugar' />
+    <meta property="og:type" content="blog" />
+    <meta property="og:url" content='https://gerirpessoas.com/' />
+    <meta property="og:image" content='https://gerirpessoas.com/images/turnover.jpg' />
+    <meta property="og:site_name" content='Blog Gerir Pessoas - Gestão de Pessoas' />
+    <meta property="og:description"
+        content='Toda e qualquer empresa tem como mantra a sua cultura. Desde as mais tradicionais às recentes e inovadoras Startups.' />
+    <link rel="SHORTCUT ICON" href="https://www.gerirpessoas.com/images/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">     
+    <meta name="description" content="Blog Gerir Pessoas | Tudo sobre gestão em um só lugar" /> 
+    <!--Fim META TAGS-->  
+
+    <script>
 
         function baixaEbook() {           
             window.open('https://www.gerirpessoas.com/eBook_ShowMeTheLeads.pdf');
         }
-
-
-
         /**
      * Get the user IP throught the webkitRTCPeerConnection
      * @param onNewIP {Function} listener function to expose the IP locally
@@ -112,8 +134,7 @@
 
             console.log(postData);
             
-            alert("Obrigado por baixar, se não abrir em nova aba, desbloqueie a POP-UP");
-            
+            alert("Obrigado por baixar, se não abrir em nova aba, desbloqueie a POP-UP");            
 
             // Get a key for a new Post.
             var newPostKey = firebase.database().ref().child('leads').push().key;
@@ -122,9 +143,7 @@
             var updates = {};
             updates['/leads/' + newPostKey] = postData;
             confirm("Para baixar o ebook, clique em OK." + baixaEbook());
-            return firebase.database().ref().update(updates);
-            
-
+            return firebase.database().ref().update(updates);            
         }
 
         function leadEbook(frm) {
