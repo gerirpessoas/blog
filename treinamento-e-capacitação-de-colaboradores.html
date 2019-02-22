@@ -467,17 +467,20 @@
             <!--Fim Linha 1 Coluna 2 RIGHT BAR-->
         </div>
         <!--FIm row principal do container-->
-        <div class="row" style=" padding-top: 20px;">
-            <div class="col" style="background-color:#00FFBA;">
-                <h1 class="titulo-form-lead">Baixe nosso ebook e melhore a gestão da sua equipe</h1>
-                <form name="" action="">
-                    <input type="text" id="txtEbookNome" class="form-control" placeholder="Nome"required /><br />
-                    <input type="email" id="txtEbookEmail" cclass="form-control" placeholder="E-mail"required /> <br />
-                    <button type=" button" class="btn btn-primary-first btn-lg btn-block">BAIXE GRATUITAMENTE O
-                        E-BOOK</button>
-                </form>
-            </div>
+        
+    <div class="row" style=" padding-top: 20px;">
+        <div class="col" style="background-color:#00FFBA;">
+            <h1 class="titulo-form-lead">Baixe nosso ebook e melhore a gestão da sua equipe</h1>
+            <form id="form-ebook">
+                <a href="#ebook"><input type="text" id="txtEbookNome" class="form-control" placeholder="Nome"
+                        required></a><br />
+                <input type="email" id="txtEbookEmail" class="form-control" placeholder="E-mail" required> <br />
+                <button type=" button" class="btn btn-primary-first btn-lg btn-block"
+                    onclick="javascript:leadEbook(document.getElementById('form-ebook'));">BAIXE GRATUITAMENTE O
+                    E-BOOK</button>
+            </form>
         </div>
+    </div>
     </div>
 
 
