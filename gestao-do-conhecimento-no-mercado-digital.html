@@ -408,37 +408,40 @@
 
             <input type="hidden" id="txtIP" />
             <input type="hidden" id="txtDataHora" />
-            <!--Linha 1 Coluna 2 RIGHT BAR-->
-            <div class="col-sm-4">
-                <form id="form-newsletter">
-                    <div class="form-group" style="max-width:314px;">
-                        <input type="text" class="form-control" id="txtNome" placeholder="Nome:" required /><br />
-                        <input type="email" class="form-control" id="txtEmail" placeholder="Email:" required /><br />
-                        <button type="button" class="btn btn-primary-first btn-lg btn-block" style="max-width:314px;"
-                            onclick="javascript:leadNews(document.getElementById('form-newsletter'));">RECEBA NOSSO
-                            CONTEÚDO</button>
-                    </div>
-                </form>
 
-                <!--Imagem esquerda 1-->
-
-                <hr />
-
-                <img src="images/ebook.png" class="img-responsive" alt="Responsive image"
-                    style="max-width:314px;"><br /><br />
-                <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;">BAIXE O
-                    E-BOOK</button>
-
-                <hr />
-
-                <!--Imagem esquerda 2-->
-                <img src="images/teste-dic.jpg" width="314px" height="177px" class="img-responsive"
-                    alt="Responsive image"><br /><br />
-                <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;">FAÇA O TESTE
-                    DISC</button>
-
-
+    <!--Linha 1 Coluna 2 RIGHT BAR-->
+    <div class="col-sm-4">
+        <form id="form-newsletter">
+            <div class="form-group" style="max-width:314px;">
+                <input type="text" class="form-control" id="txtNome" placeholder="Nome:"required><br />
+                <input type="email" class="form-control" id="txtEmail" placeholder="Email:" required><br />
+                <button type="button" class="btn btn-primary-first btn-lg btn-block" style="max-width:314px;"
+                    onclick="javascript:leadNews(document.getElementById('form-newsletter'));">RECEBA NOSSO
+                    CONTEÚDO</button>
             </div>
+        </form>
+
+        <!--Imagem esquerda 1-->
+
+        <hr />
+
+        <img src="images/ebook.png" class="img-responsive" alt="Responsive image" style="max-width:314px;"><br /><br />
+        <a name="#ebook"> <button class="btn btn-success"
+                                    style="font-family: 'KhandBold';font-size:18px;background-color:#00FFBA;color:#005CA9;width:314px !important;"
+                                    onclick="javascript:try{document.getElementById('txtEbookNome').focus();}catch(e){alert(e);}">Baixe o nosso e-book</button></a>
+                                    
+                                    
+                                    
+
+        <hr />
+
+        <!--Imagem esquerda 2-->
+        <img src="images/teste-dic.jpg" width="314px" height="177px" class="img-responsive"
+            alt="Responsive image"><br /><br />
+        <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;"><a href="teste-disc.html">FAÇA O TESTE DISC</a></button>
+
+
+    </div>
             <!--Fim Linha 1 Coluna 2 RIGHT BAR-->
         </div>
         <!--FIm row principal do container-->
