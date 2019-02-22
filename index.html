@@ -123,7 +123,7 @@
         };
 
         firebase.initializeApp(config);
-        function writeNewLead(vNome, vEmail, vTipo, vData, vIp, vTeste = 'N', vTaxa = 'NA', vNumFunc = 'NA') {
+        function writeNewLead(vNome, vEmail, vTipo, vData, vIp, vCanal = 'NEWSLETTER', vTaxa = 'NA', vNumFunc = 'NA') {
             
             if (nome == '' || email == ''){
                 alert("CUIDADO! \n\nPREENCHA OS DADOS NOME E EMAIL ANTES DE CONTINUAR.");
@@ -137,7 +137,7 @@
                 tipo: vTipo,
                 data: vData,
                 ip: vIp,
-                teste: vTeste,
+                canal: vCanal,
                 taxa: vTaxa,
                 nfunc: vNumFunc
             };
@@ -163,7 +163,7 @@
                 data = document.getElementById('txtDataHora').value;
                 ip = document.getElementById('txtIP').value;
 
-                if (writeNewLead(nome, email, tipo, data, ip)){
+                if (writeNewLead(nome, email, tipo, data, ip, 'EBOOK')){
                     frm.txtEbookNome.value = '';
                     frm.txtEbookEmail.value = '';
                     try{ 
@@ -203,7 +203,7 @@
                 
                 ip = document.getElementById('txtIP').value;
                 
-                if (writeNewLead(nome, email, tipo, data, ip, 'N', taxa, numfunc)){
+                if (writeNewLead(nome, email, tipo, data, ip, 'POPUP', taxa, numfunc)){
                 
                     frm.txtBannerNome.value = '';
                     
@@ -272,7 +272,7 @@
                 data = document.getElementById('txtDataHora').value;
                 ip = document.getElementById('txtIP').value;
 
-                if (writeNewLead(nome, email, tipo, data, ip)){
+                if (writeNewLead(nome, email, tipo, data, ip, 'TESTE DISC')){
                     frm.txtDiscNome.value = '';
                     frm.txtDiscEmail.value = '';
                     alert("Lembre-se de desbloquear o pop-up para iniciar o teste!");
