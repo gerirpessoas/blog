@@ -1,5 +1,4 @@
-# Rule 1
-User-agent: *
-Allow: /
 
+User-agent: *
+Disallow:
 Sitemap: https://www.gerirpessoas.com/sitemap.xml
