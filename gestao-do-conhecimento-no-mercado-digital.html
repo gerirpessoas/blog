@@ -1,0 +1,520 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134910297-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-134910297-1');
+    </script>
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-functions.js"></script>
+
+    <!-- Comment out (or don't include) services that you don't want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-storage.js"></script> -->
+
+    <title>A gestão do conhecimento no mercado digital | Gerir Pessoas</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/geral.css">
+     <!-- required meta tags -->
+     <meta charset="utf-8">
+     <meta name="title" content="A gestão do conhecimento no mercado digital" />
+     <meta name="keywords" content='gestão do conhecimento, rh, gestão de pessoas, paradigma da transformação, qualidade de vida no trabalho' />
+     <meta name="author" content='Gerir Pessoas - http://www.gerirpessoas.com' />
+     <meta name="url" content='http://www.gerirpessoas.com' />
+     <meta name="copyright" content='Copyright (c) 2019 Gerir Pessoas' />
+ 
+     <meta name="HandheldFriendly" content="True">
+     <meta name="MobileOptimized" content="320">
+ 
+     <meta http-equiv="cleartype" content="on">
+     <link rel="canonical" href="https://gerirpessoas.com/" />
+     <meta name="DC.title" content='A gestão do conhecimento no mercado digital' />
+     <meta name="DC.identifier" content='gerirpessoas.com' />
+     <meta name="DC.description"
+         content='Leia este post e saiba como a gestão do conhecimento pode ajudar na obtenção de excelentes resultados no mercado digital' />
+     <meta name="DC.subject" content='gestão do conhecimento, rh, gestão de pessoas, paradigma da transformação, qualidade de vida no trabalho' />
+     <meta name="DC.language" scheme="ISO639-1" content="en" />
+     <meta name="DC.creator" content='https://gerirpessoas.com/' />
+ 
+     <meta name="DCTERMS.created" scheme="ISO8601" content="2019-02-19" />
+     <meta property="og:title" content='Blog Gerir Pessoas - A gestão do conhecimento no mercado digital' />
+     <meta property="og:type" content="blog" />
+     <meta property="og:url" content='https://gerirpessoas.com/' />
+     <meta property="og:image" content='https://gerirpessoas.com/images/turnover.jpg' />
+     <meta property="og:site_name" content='Blog Gerir Pessoas - Gestão de Pessoas' />
+     <meta property="og:description"
+         content='Leia este post e saiba como a gestão do conhecimento pode ajudar na obtenção de excelentes resultados no mercado digital' />
+     <link rel="SHORTCUT ICON" href="https://www.gerirpessoas.com/images/favicon.ico" />
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">     
+     <meta name="description" content="A gestão do conhecimento no mercado digital | Gerir Pessoas" /> 
+     <!--Fim META TAGS-->  
+ 
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     
+    <script>
+
+        function baixaEbook() {
+            window.open('https://www.gerirpessoas.com/eBook_ShowMeTheLeads.pdf');
+        }
+        /**
+     * Get the user IP throught the webkitRTCPeerConnection
+     * @param onNewIP {Function} listener function to expose the IP locally
+     * @return undefined
+     */
+        function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
+            //compatibility for firefox and chrome
+            var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+            var pc = new myPeerConnection({
+                iceServers: []
+            }),
+                noop = function () { },
+                localIPs = {},
+                ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
+                key;
+
+            function iterateIP(ip) {
+                if (!localIPs[ip]) onNewIP(ip);
+                localIPs[ip] = true;
+            }
+
+            //create a bogus data channel
+
+            // create offer and set local description
+            pc.createOffer().then(function (sdp) {
+                sdp.sdp.split('\n').forEach(function (line) {
+                    if (line.indexOf('candidate') < 0) return;
+                    line.match(ipRegex).forEach(iterateIP);
+                });
+
+                pc.setLocalDescription(sdp, noop, noop);
+            }).catch(function (reason) {
+                // An error occurred, so handle the failure to connect
+            });
+
+            //listen for candidate events
+            pc.onicecandidate = function (ice) {
+                if (!ice || !ice.candidate || !ice.candidate.candidate || !ice.candidate.candidate.match(ipRegex)) return;
+                ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
+            };
+        }
+
+
+
+        var config = {
+            apiKey: "AIzaSyCHYcb95pkiVQw5hi0XPIYwMtBu40F9R2Y",
+            authDomain: "gerirpessoas-xp17.firebaseapp.com",
+            databaseURL: "https://gerirpessoas-xp17.firebaseio.com",
+            projectId: "gerirpessoas-xp17",
+            storageBucket: "gerirpessoas-xp17.appspot.com",
+            messagingSenderId: "390208837263"
+        };
+
+        firebase.initializeApp(config);
+        function writeNewLead(vNome, vEmail, vTipo, vData, vIp) {
+            // A post entry.
+            var postData = {
+                nome: vNome,
+                email: vEmail,
+                tipo: vTipo,
+                data: vData,
+                ip: vIp
+            };
+
+            console.log(postData);
+
+            // Get a key for a new Post.
+            var newPostKey = firebase.database().ref().child('leads').push().key;
+
+            // Write the new post's data simultaneously in the posts list and the user's post list.
+            var updates = {};
+            updates['/leads/' + newPostKey] = postData;
+            confirm("Para baixar o ebook, clique em OK." + baixaEbook());
+            return firebase.database().ref().update(updates);
+        }
+
+        function leadBanner(frm) {
+
+            try {
+
+                nome = frm.txtBannerNome.value;
+                email = frm.txtBannerEmail.value;
+                numfunc = frm.txtBannerNumFuncionarios.value;
+                taxa = frm.txtBannerTaxaRotatividade.value;
+
+                writeNewLead(nome, email, numfunc, taxa, "IP");
+
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+
+        }
+
+
+        function leadBanner(frm) {
+
+            try {
+
+                nome = frm.txtBannerNome.value;
+                email = frm.txtBannerEmail.value;
+                tipo = 'B2?';
+                numfunc = frm.txtBannerNumFuncionarios.value;
+                taxa = frm.txtBannerTaxaRotatividade.value;
+                data = document.getElementById('txtDataHora').value;
+                ip = document.getElementById('txtIP').value;
+
+                writeNewLead(nome, email, tipo, data, ip);
+
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+
+        }
+
+
+        function leadNews(frm) {
+
+            try {
+
+                nome = frm.txtNome.value;
+                email = frm.txtEmail.value;
+
+                tipo = 'B2?';
+                data = document.getElementById('txtDataHora').value;
+                ip = document.getElementById('txtIP').value;
+
+                writeNewLead(nome, email, tipo, data, ip);
+
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <!--Início Menu navegação-->
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #005CA9;">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="http://www.gerirpessoas.com"
+                            style="font-family: 'Roboto';font-weight:bold;font-size:22px;color:#fff; padding-left: 0px;margin-right:25px;">Blog
+                            Sobre RH e Gestão de Pessoas</a>
+                        <a class="navbar-brand" href="#" style="font-family: 'KhandBold';font-size:18px;color:#fff; "
+                            onclick="javascript:document.getElementById('txtNome').focus();">Assine a Newsletter</a>
+                        <a class="navbar-brand" href="https://www.instagram.com/gerirpessoas/" target="_blank"
+                            style="font-family: 'KhandBold';font-size:18px; color:#fff; padding-left: 10px;">Siga no
+                            Instagram</a>
+                        <a class="navbar-brand" href="#"
+                            style="font-family: 'KhandBold';font-size:18px;  padding-left: 0px;">
+                            <button class="btn btn-success"
+                                style="font-family: 'KhandBold';font-size:18px;background-color:#00FFBA;color:#005CA9"
+                                onclick="javascript:try{document.getElementById('txtEbookNome').focus();}catch(e){alert(e);}">Baixe
+                                o nosso e-book</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--Estrutra Post 1-->
+        <div class="row" style="padding-top:30px;">
+            <!-- cADA LINHA PODE TER 12 COLUNAS-->
+            <div class="col">
+                <!--Div logo-->
+                <div>
+                    <img src="images/logo.jpg" width="230px" height="80px" />
+                </div>
+                <!--Fim Div logo-->
+
+
+                <hr
+                    style="height:1px; border:none; color:#005CA9; background-color:#000; margin-top: 0px;  margin-top: 20px; width: 100%;" />
+
+                <div class="date-hora">20 DE FEV. | 15H30</div>
+
+                <!--Corpo do POST-->
+                <div class="corpo-post">
+
+                    <div style="display:flex;flex-direction:row;flex-wrap:wrap;background:#f9f9f9">
+                        <div>
+                            <img src="images/gestao-do-conhecimento-no-mercado-digital.jpg" style="width:300px;"
+                                alt="A gestão do conhecimento no mercado digital | Gerir Pessoas." />
+
+                        </div>
+                        <div style="max-width:427px;background-color: #00FFBA;color: #005CA9;">
+
+                            <h1>A gestão do conhecimento no mercado digital</h1>
+
+                        </div>
+                    </div>
+                    <p>
+                        Todos sabemos que uma empresa apesar do seu propósito, existe para ter lucro. Muitos gestores possuem o pensamento particularizado em aumentar a receita e reduzir seus custos. No entanto, acabam esquecendo do maior ativo que a empresa possui, que são as pessoas (veja o artigo da Gerir Pessoas sobre a importância da cultura organizacional <a href="a-importancia-de-uma-cultura-organizacional-na-sua-empresa.html" target="_blank">clicando aqui</a>). Tratando-se principalmente de empresas do mercado digital que está em constante evolução e, sobretudo, devem acompanhar as modificações de mercado, é muito importante trabalhar, desenvolver, identificar, alocar e reter o bom conhecimento dentro da empresa. Uma maneira de iniciar isso é por meio da gestão do conhecimento.
+                    </p>
+					<p>
+						Segundo artigos publicados pela <a href="https://endeavor.org.br/" target="_blank">Endeavor Brasil</a>, hoje em dia, o diferencial competitivo das empresas está na capacidade de mudança e inovação que elas possuem. Este fato afirma ainda mais a importância da implementação do paradigma da transformação e uma gestão do conhecimento.
+					</p>
+					<p>
+						A gestão de conhecimento, através da gestão estratégica de pessoas visa, principalmente, os seguintes itens:
+					</p>
+					
+						<ul>
+						<li>Conciliar ações a fim de atender as estratégias organizacionais gerais;</li>
+						<li>Reduzir a resistência às mudanças necessárias;</li>
+						<li>Prover e capacitar talentos;</li>
+						<li>Obter o comprometimento dos trabalhadores.</li>
+						</ul>
+					<p>
+					De maneira prática várias ações podem ser implantadas inicialmente. Um primeiro passo seria elaborar e implementar para a empresa uma ferramenta de gestão chamada Matriz de Habilidades. Essa ferramenta servirá para mapear os conhecimentos e competências de cada funcionário por meio de perguntas chave pré estabelecidas. Uma vez mapeado o conhecimento dos funcionários será possível aplicar treinamentos para grupos específicos na tentativa de nivelamento de competências.
+					</p>
+					<p>
+					Associado à Matriz de Habilidades, é interessante a implementação de um sistema de avaliação e acompanhamento de evolução do trabalho chamada de trilha de carreira. Nessa ferramenta são estabelecidos patamares de nivelamento. A partir de avaliações de desempenho, é possível situar os funcionários entre os que possuem capacidade para promoção/desenvolvimento. Também é possível identificar os que são fracos ou insuficientes passíveis de desligamento.
+					</p>
+					<p>
+					Ainda sim, para tornar mais justa a avaliação dos gestores é importante que todos os pares (funcionários que exercem a mesma função), a partir da implementação do novo método de gestão, se equilibrem em um mesmo piso salarial, piso este definido pela função.
+					</p>
+					<p>
+					A implementação dos conceitos deste modelo de gestão gera uma maior competitividade, uma vez que prepara e capacita a empresa para mudanças e inovação. A gestão do conhecimento propicia um ambiente de trabalho no qual permite que os colaboradores gerem conhecimento. As pessoas se tornam mais valorizadas, são aplicadas técnicas que as deixam mais produtivas para gerar conhecimento e consequentemente gerar resultados para a companhia.
+					</p>
+					<p>
+					Existem 4 elementos essenciais para qualquer empresa, que são:
+					</p>
+					<ul>
+						<li>Dados: São os sinais coletados;</li>
+						<li>Informação: É o tratamento dos dados;</li>
+						<li>Conhecimento: É a análise, interpretação e validação das informações;</li>
+						<li>Competência: É a utilização do conhecimento para gerar resultados;</li>
+					</ul>
+					<p>
+					O que se observa é que dados e informações, podem ser obtidos facilmente através de programas de computador. Estes elementos, quando sozinhos não geram nenhum valor ao negócio. Já conhecimento e competência, geralmente só podem ser realizados através de pessoas. São estes dois últimos elementos que realmente o que gera lucro para a empresa. Por este motivo, a gestão de pessoas e a economia com base em conhecimento é essencial para o desenvolvimento de qualquer empresa, seja no mercado digital ou não.
+					</p>
+					<p>
+					E aí? Já está utilizando a gestão de conhecimento na sua empresa? Ou agora já pretende colocá-la em prática? Cadastre seu e-mail em nosso site e fique por dentro de todos os conteúdos e ferramentas gratuitas que a Gerir Pessoas oferece para apoiar seu negócio e fazer seu time trabalhar em alto nível.
+					</p>
+                </div>
+                <!--Fim Post numero 1-->
+            </div>
+            <!--FINAL DIV COLUNA 1-->
+
+            <input type="hidden" id="txtIP" />
+            <input type="hidden" id="txtDataHora" />
+            <!--Linha 1 Coluna 2 RIGHT BAR-->
+            <div class="col-sm-4">
+                <form id="form-newsletter">
+                    <div class="form-group" style="max-width:314px;">
+                        <input type="text" class="form-control" id="txtNome" placeholder="Nome:" required /><br />
+                        <input type="email" class="form-control" id="txtEmail" placeholder="Email:" required /><br />
+                        <button type="button" class="btn btn-primary-first btn-lg btn-block" style="max-width:314px;"
+                            onclick="javascript:leadNews(document.getElementById('form-newsletter'));">RECEBA NOSSO
+                            CONTEÚDO</button>
+                    </div>
+                </form>
+
+                <!--Imagem esquerda 1-->
+
+                <hr />
+
+                <img src="images/ebook.png" class="img-responsive" alt="Responsive image"
+                    style="max-width:314px;"><br /><br />
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;">BAIXE O
+                    E-BOOK</button>
+
+                <hr />
+
+                <!--Imagem esquerda 2-->
+                <img src="images/teste-dic.jpg" width="314px" height="177px" class="img-responsive"
+                    alt="Responsive image"><br /><br />
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="max-width:314px;">FAÇA O TESTE
+                    DISC</button>
+
+
+            </div>
+            <!--Fim Linha 1 Coluna 2 RIGHT BAR-->
+        </div>
+        <!--FIm row principal do container-->
+        <div class="row" style=" padding-top: 20px;">
+            <div class="col" style="background-color:#00FFBA;">
+                <h1 class="titulo-form-lead">Baixe nosso ebook e melhore a gestão da sua equipe</h1>
+                <form name="" action="">
+                    <input type="text" id="txtEbookNome" class="form-control" placeholder="Nome"required /><br />
+                    <input type="email" id="txtEbookEmail" cclass="form-control" placeholder="E-mail"required /> <br />
+                    <button type=" button" class="btn btn-primary-first btn-lg btn-block">BAIXE GRATUITAMENTE O
+                        E-BOOK</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--
+        ####    ####    ####    ####    ####    
+        
+        ####    POPUP VOADOR  001       ####
+        
+        ####    ####    ####    ####    ####    
+        
+        ####
+                Criado em 20/02/2019 23:15  (Diego)            
+        ####    
+                Última Alteração Em:
+        ####    
+                21/02/2019 às 06:39 (Diego)
+        ####    
+        
+        ####    ####    ####    ####    ####    
+        
+        -->
+
+    <div class="popup" id="banner-01">
+
+        <div class="popup-content" style="max-width:883px;">
+
+            <span class="popup-btn-close" align="right">&times;</span>
+
+            <div style="display:flex;flex-direction:row;flex-wrap:wrap;">
+
+                <div class="popup-content">
+
+                    <p>Quanto custa a <b>rotatividade</b> em sua empresa?
+
+                        <span>Saiba como reduzi-la!</span>
+
+                        <span style="font-size:16px;">Descubra quais são os prejuízos gerados por contratações erradas
+                            em sua empresa e o que fazer para evita-los</span>
+
+                    </p>
+
+                </div>
+
+
+                <div class="popup-form">
+
+                    <form id="form-banner" method="POST" action="javascript:;" onsubmit="javascript:return false();">
+                        <div class="form-group" style="max-width:314px;">
+
+                            <input type="text" class="form-control" id="txtBannerNome" placeholder="Nome completo" required />
+
+                            <input type="email" class="form-control" id="txtBannerEmail" placeholder="Email" required />
+
+                            <input type="text" class="form-control" id="txtBannerNumFuncionarios"
+                                placeholder="Número de funcionários" />
+
+                            <input type="text" class="form-control" id="txtBannerTaxaRotatividade"
+                                placeholder="Taxa de rotatividade*" />
+
+                            <button type="button" class="btn btn-primary-first btn-lg btn-block"
+                                onclick="javascript:leadBanner(document.getElementById('form-banner'));">RECEBER
+                                GR&Aacute;TIS</button>
+                        </div>
+                    </form>
+
+                    <p>
+
+                        <span style="font-size:14px;">*se você não sabe sua taxa de rotatividade da sua empresa, utilize
+                            a média brasileira: 43,1%</span>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--
+        ####    ####    ####    ####    ####    
+        
+        ####    FIM DO POPUP VOADOR 01  ####
+        
+        ####    ####    ####    ####    ####    
+        -->
+
+    <script>
+
+        var modal = document.getElementById('banner-01');
+
+        var span = document.getElementsByClassName("popup-btn-close")[0];
+
+        window.onload = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Usage
+
+        getUserIP(function (ip) {
+            //alert("Got IP! :" + ip);
+
+            document.getElementById('txtIP').value += ip + " ";
+        });
+    </script>
+
+    <script type="application/javascript">
+        function getIP(json) {
+            try {
+
+                document.getElementById('txtDataHora').value = (new Date()).toLocaleDateString('en-US');
+
+                document.getElementById('txtIP').value += json.ip + " ";
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+        }
+
+
+    </script>
+
+    <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+</body>
+
+</html>
