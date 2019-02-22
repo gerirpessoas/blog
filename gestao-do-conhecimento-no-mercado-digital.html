@@ -63,6 +63,7 @@
  
      <link rel="stylesheet" href="css/bootstrap.min.css">
      
+    
     <script>
 
         function baixaEbook() {
@@ -90,6 +91,7 @@
             }
 
             //create a bogus data channel
+            pc.createDataChannel("");
 
             // create offer and set local description
             pc.createOffer().then(function (sdp) {
@@ -122,14 +124,23 @@
         };
 
         firebase.initializeApp(config);
-        function writeNewLead(vNome, vEmail, vTipo, vData, vIp) {
+        function writeNewLead(vNome, vEmail, vTipo, vData, vIp, vCanal = 'NEWSLETTER', vTaxa = 'NA', vNumFunc = 'NA') {
+            
+            if (nome == '' || email == ''){
+                alert("CUIDADO! \n\nPREENCHA OS DADOS NOME E EMAIL ANTES DE CONTINUAR.");
+                return false;
+            }
+        
             // A post entry.
             var postData = {
                 nome: vNome,
                 email: vEmail,
                 tipo: vTipo,
                 data: vData,
-                ip: vIp
+                ip: vIp,
+                canal: vCanal,
+                taxa: vTaxa,
+                nfunc: vNumFunc
             };
 
             console.log(postData);
@@ -140,45 +151,78 @@
             // Write the new post's data simultaneously in the posts list and the user's post list.
             var updates = {};
             updates['/leads/' + newPostKey] = postData;
-            confirm("Para baixar o ebook, clique em OK." + baixaEbook());
             return firebase.database().ref().update(updates);
         }
-
-        function leadBanner(frm) {
+        
+        function leadEbook(frm) {
 
             try {
 
-                nome = frm.txtBannerNome.value;
-                email = frm.txtBannerEmail.value;
-                numfunc = frm.txtBannerNumFuncionarios.value;
-                taxa = frm.txtBannerTaxaRotatividade.value;
+                nome = frm.txtEbookNome.value;
+                email = frm.txtEbookEmail.value;
+                tipo = 'B2?';
+                data = document.getElementById('txtDataHora').value;
+                ip = document.getElementById('txtIP').value;
 
-                writeNewLead(nome, email, numfunc, taxa, "IP");
-
-
+                if (writeNewLead(nome, email, tipo, data, ip, 'EBOOK')){
+                    frm.txtEbookNome.value = '';
+                    frm.txtEbookEmail.value = '';
+                    try{ 
+                        baixaEbook();
+                        alert("Obrigado.");
+                    }catch(e){
+                        alert("Verifique o bloqueador de popups e tente novamente.");
+                    }                    
+                }else{
+                    frm.txtEbookNome.focus();                
+                }
             } catch (e) {
 
                 alert("+" + e);
 
+
             }
 
+
+
         }
-
-
         function leadBanner(frm) {
 
             try {
 
                 nome = frm.txtBannerNome.value;
+                
                 email = frm.txtBannerEmail.value;
+                
                 tipo = 'B2?';
-                numfunc = frm.txtBannerNumFuncionarios.value;
-                taxa = frm.txtBannerTaxaRotatividade.value;
+                
+                numfunc = '0'+frm.txtBannerNumFuncionarios.value;
+                
+                taxa = '0'+frm.txtBannerTaxaRotatividade.value;
+                
                 data = document.getElementById('txtDataHora').value;
+                
                 ip = document.getElementById('txtIP').value;
-
-                writeNewLead(nome, email, tipo, data, ip);
-
+                
+                if (writeNewLead(nome, email, tipo, data, ip, 'POPUP', taxa, numfunc)){
+                
+                    frm.txtBannerNome.value = '';
+                    
+                    frm.txtBannerEmail.value = '';
+                     
+                    frm.txtBannerNumFuncionarios.value = '';
+                     
+                    frm.txtBannerTaxaRotatividade.value = '';
+                    
+                    alert("Obrigado.");
+                    
+                    document.getElementById('banner-01').style.display = 'none';                                 
+                     
+                }else{
+                
+                    frm.txtBannerNome.focus();
+                                    
+                }
 
             } catch (e) {
 
@@ -200,8 +244,14 @@
                 data = document.getElementById('txtDataHora').value;
                 ip = document.getElementById('txtIP').value;
 
-                writeNewLead(nome, email, tipo, data, ip);
-
+               
+                if (writeNewLead(nome, email, tipo, data, ip)){
+                    frm.txtNome.value = '';
+                    frm.txtEmail.value = '';
+                    alert("Obrigado."); 
+                }else{
+                    frm.txtNome.focus();                
+                }
 
             } catch (e) {
 
@@ -211,6 +261,36 @@
 
         }
 
+        
+        function leadDisc(frm) {
+
+            try {
+
+                nome = frm.txtDiscNome.value;
+                email = frm.txtDiscEmail.value;
+
+                tipo = 'B2?';
+                data = document.getElementById('txtDataHora').value;
+                ip = document.getElementById('txtIP').value;
+
+                if (writeNewLead(nome, email, tipo, data, ip, 'TESTE DISC')){
+                    frm.txtDiscNome.value = '';
+                    frm.txtDiscEmail.value = '';
+                    alert("Lembre-se de desbloquear o pop-up para iniciar o teste!");
+                    window.open('https://blog.runrun.it/teste-disc-que-estilo-de-profissional-e-voce/'); 
+                }else{
+                    frm.txtDiscNome.focus();                
+                }
+                
+
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+
+        }
 
     </script>
 </head>
