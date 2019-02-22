@@ -23,54 +23,56 @@
 
     <!-- Comment out (or don't include) services that you don't want to use -->
     <!-- <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-storage.js"></script> -->
-    <title>Cultura Organizacional: a import&acirc;ncia na sua empresa | Gerir Pessoas</title>
+
+    <title>Qualidade de Vida no Trabalho Gera Luco | Gerir Pessoas</title>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/geral.css">
-    <!-- required meta tags -->
-    <meta charset="utf-8">
-    <!-- required meta tags -->
-    <meta name="title" content="A importância de uma cultura organizacional na sua empresa" />
-    <meta name="keywords"
-        content='gestão de pessoas em empresas, cultura da empresa, recrutamento de talentos, Gerir Pessoas' />
-    <meta name="author" content='Gerir Pessoas - http://www.gerirpessoas.com' />
-    <meta name="url"
-        content='http://www.gerirpessoas.com/a-importancia-de-uma-cultura-organizacional-na-sua-empresa.html' />
-    <meta name="copyright" content='Copyright (c) 2019 Gerir Pessoas' />
-
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-
-    <meta http-equiv="cleartype" content="on">
-    <link rel="canonical" href="https://gerirpessoas.com/" />
-    <meta name="DC.title" content='A importância de uma cultura organizacional na sua empresa' />
-    <meta name="DC.identifier" content='gerirpessoas.com' />
-    <meta name="DC.description"
-        content='Toda e qualquer empresa tem como mantra a sua cultura. Desde as mais tradicionais às recentes e inovadoras Startups. Quando se fala em gestão de pessoas em empresas' />
-    <meta name="DC.subject" content='gestão de pessoas, rh, turnover, turnover nas empresas, medir turnover' />
-    <meta name="DC.language" scheme="ISO639-1" content="en" />
-    <meta name="DC.creator" content='https://gerirpessoas.com/' />
-
-    <meta name="DCTERMS.created" scheme="ISO8601" content="2019-02-19" />
-    <meta property="og:title" content='Blog Gerir Pessoas | A importância de uma cultura organizacional na sua empresa' />
-    <meta property="og:type" content="blog" />
-    <meta property="og:url" content='https://gerirpessoas.com/' />
-    <meta property="og:image" content='https://gerirpessoas.com/images/turnover.jpg' />
-    <meta property="og:site_name" content='Blog Gerir Pessoas - Gestão de Pessoas' />
-    <meta property="og:description"
-        content='Toda e qualquer empresa tem como mantra a sua cultura. Desde as mais tradicionais às recentes e inovadoras Startups. Quando se fala em gestão de pessoas em empresas' />
-    <link rel="SHORTCUT ICON" href="https://www.gerirpessoas.com/images/favicon.ico" />
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+     <!-- required meta tags -->
+     <meta charset="utf-8">
+     <meta name="title" content="Qualidade de Vida no Trabalho Gera Luco | Gerir Pessoas" />
+     <meta name="keywords" content='gestão de pessoas, rh, turnover, turnover nas empresas, medir turnover' />
+     <meta name="author" content='Gerir Pessoas - http://www.gerirpessoas.com' />
+     <meta name="url" content='http://www.gerirpessoas.com' />
+     <meta name="copyright" content='Copyright (c) 2019 Gerir Pessoas' />
+ 
+     <meta name="HandheldFriendly" content="True">
+     <meta name="MobileOptimized" content="320">
+ 
+     <meta http-equiv="cleartype" content="on">
+     <link rel="canonical" href="https://gerirpessoas.com/" />
+     <meta name="DC.title" content='Qualidade de Vida no Trabalho Gera Luco | Gerir Pessoas' />
+     <meta name="DC.identifier" content='gerirpessoas.com' />
+     <meta name="DC.description"
+         content='Leia este post e saiba como a qualidade de vida no trablho pode ajudar a obtenção de excelentes resultados para sua empresa.' />
+     <meta name="DC.subject" content='gestão de pessoas, rh, turnover, turnover nas empresas, medir turnover' />
+     <meta name="DC.language" scheme="ISO639-1" content="en" />
+     <meta name="DC.creator" content='https://gerirpessoas.com/' />
+ 
+     <meta name="DCTERMS.created" scheme="ISO8601" content="2019-02-19" />
+     <meta property="og:title" content='Qualidade de Vida no Trabalho Gera Luco | Gerir Pessoas' />
+     <meta property="og:type" content="blog" />
+     <meta property="og:url" content='https://gerirpessoas.com/' />
+     <meta property="og:image" content='https://gerirpessoas.com/images/turnover.jpg' />
+     <meta property="og:site_name" content='Blog Gerir Pessoas - Gestão de Pessoas' />
+     <meta property="og:description"
+         content='Leia este post e saiba como a qualidade de vida no trablho pode ajudar a obtenção de excelentes resultados para sua empresa.' />
+     <link rel="SHORTCUT ICON" href="https://www.gerirpessoas.com/images/favicon.ico" />
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">     
+     <meta name="description" content="Turnover nas empresas: Tudo que você precisa saber | Gerir Pessoas" /> 
+     <!--Fim META TAGS-->  
+ 
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     
     <script>
 
+        function baixaEbook() {
+            window.open('https://www.gerirpessoas.com/eBook_ShowMeTheLeads.pdf');
+        }
         /**
      * Get the user IP throught the webkitRTCPeerConnection
      * @param onNewIP {Function} listener function to expose the IP locally
      * @return undefined
      */
-
-        function baixaEbook() {
-            window.open('https://www.gerirpessoas.com/eBook_ShowMeTheLeads.pdf');
-        }
         function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
             //compatibility for firefox and chrome
             var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
@@ -133,8 +135,6 @@
 
             console.log(postData);
 
-            alert("Obrigado!");
-
             // Get a key for a new Post.
             var newPostKey = firebase.database().ref().child('leads').push().key;
 
@@ -142,9 +142,29 @@
             var updates = {};
             updates['/leads/' + newPostKey] = postData;
             confirm("Para baixar o ebook, clique em OK." + baixaEbook());
-
             return firebase.database().ref().update(updates);
         }
+
+        function leadBanner(frm) {
+
+            try {
+
+                nome = frm.txtBannerNome.value;
+                email = frm.txtBannerEmail.value;
+                numfunc = frm.txtBannerNumFuncionarios.value;
+                taxa = frm.txtBannerTaxaRotatividade.value;
+
+                writeNewLead(nome, email, numfunc, taxa, "IP");
+
+
+            } catch (e) {
+
+                alert("+" + e);
+
+            }
+
+        }
+
 
         function leadBanner(frm) {
 
@@ -160,25 +180,6 @@
 
                 writeNewLead(nome, email, tipo, data, ip);
 
-            } catch (e) {
-
-                alert("+" + e);
-
-            }
-
-        }
-
-        function leadEbook(frm) {
-
-            try {
-
-                nome = frm.txtEbookNome.value;
-                email = frm.txtEbookEmail.value;
-                tipo = 'B2?';
-                data = document.getElementById('txtDataHora').value;
-                ip = document.getElementById('txtIP').value;
-
-                writeNewLead(nome, email, tipo, data, ip);
 
             } catch (e) {
 
@@ -202,6 +203,7 @@
 
                 writeNewLead(nome, email, tipo, data, ip);
 
+
             } catch (e) {
 
                 alert("+" + e);
@@ -212,8 +214,6 @@
 
 
     </script>
-
-
 </head>
 
 <body>
@@ -269,98 +269,74 @@
 
                     <div style="display:flex;flex-direction:row;flex-wrap:wrap;background:#f9f9f9">
                         <div>
-                            <img src="images/a-importancia-de-uma-cultura-organizacional-na-sua-empresa.jpg"
-                                style="width:265px;"
-                                alt="A IMPORT&Acirc;NCIA DE UMA CULTURA ORGANIZACIONAL NA SUA EMPRESA" />
+                            <img src="images/qualidade-de-vida-no-trabalho.jpg" style="width:300px;" alt="Qualidade de Vida no Trabalho Gera Luco | Gerir Pessoas" />
 
                         </div>
                         <div style="max-width:427px;background-color: #00FFBA;color: #005CA9;">
-                            <h1>A IMPORT&Acirc;NCIA DE UMA CULTURA ORGANIZACIONAL NA SUA EMPRESA</h1>
+
+                            <h1>Qualidade de Vida no Trabalho</h1>
+
                         </div>
                     </div>
-                    <!--
-                    <table>
-                        <tr>
-                            <td><img width="100%" style="min-width:255px;" src="images/a-importancia-de-uma-cultura-organizacional-na-sua-empresa.jpg" alt="saiba como uma cultura organizacional forte é capaz de melhorar os resultados da sua empresa e motivar a sua equipe." /></td>
-                            <td class="titulo-post"><p>A import&acirc;ncia de uma cultura organizacional na sua empresa</p></td>
-                        </tr>
+                    
+                    <p>
+                    Sabemos que um ambiente de trabalho agradável pode representar o caminho das pedras para o sucesso de uma organização. A qualidade de vida no trabalho dos funcionários está muito relacionada ao nível de envolvimento dos mesmos nas decisões da empresa. O sentimento de dono, o sentimento ser mais do que apenas mão-de-obra. Em outras palavras, aumentando o engajamento dos funcionários os lucros aumentam.
+                    </p>
+                    <p>
+                    Fato que comprova esta tese é o da empresa Elektro, distribuidora de energia elétrica com concessão nos estados de São Paulo e Mato Grosso do Sul. Veja a palestra do CEO da Elektro sobre qualidade de vida no trabalho (QVT) clicando aqui. Após a empresa aplicar a QVT na sua cultura organizacional (veja o artigo da Gerir Pessoas sobre cultura organizacional clicando aqui), seus indicadores das mais diversas áreas obtiveram excelentes resultados nunca antes alcançados. São eles:
+                      <ul>
+                        <li>Melhor empresa para trabalhar da América Latina;</li>
+                        <li>Empresa mais sustentável do país;</li>
+                        <li>Melhor qualidade de gestão Iberoamericana;</li>
+                        <li>Eficiência Operacional de aproximadamente 30%.
+                        Mas afinal, o que é a qualidade de vida no trabalho?
+                        Segundo Nadler e Lawler, a qualidade de vida no trabalho está fundamentada em:
+                        </li>
+                        <li>Participação dos funcionários nas Decisões;</li>
+                        <li>Reestruturação do trabalho através do enriquecimento das tarefas e de grupos autônomos de trabalho;</li>
+                        <li>Inovação no sistema de recompensas para influenciar o clima organizacional;
+                        Melhoria no ambiente de trabalho quanto às condições físicas e psicológicas, horário de trabalho, ergonomia, etc.</li>
+                      </ul>
+                    </p>
+                    
+                    <p>
+                    Dessa forma, visando aderir aos requisitos básicos da Qualidade de vida no trabalho, são propostas as seguintes ações/intervenções no ambiente de trabalho e na cultura organizacional de uma empresa que queira utilizar este modelo:
+                    
+                    <ul>
+                      <li>As equipes, mesmo que com trabalhos independentes, devem ter a oportunidade de conhecer os outros colaboradores e suas funções. Para tal, um primeiro passo, seria que houvessem apresentações de briefings entre as equipes. Além da troca de informações profissionais, esse seria talvez o primeiro contato de alguns colaboradores;</li>
+                      <li>Designar agentes de integração. É importante que as empresas tenham responsáveis por integrar as pessoas e fomentar um ambiente de trabalho saudável. Esses funcionários podem ter esse objetivo designado durante as avaliações de desempenho. Ou seja, não há necessidade de nenhuma contratação;</li>
+                      <li>Criação de espaços comuns. Uma cozinha, um espaço de jogos e outros espaços que possam promover a comunicação entre os funcionários é de extrema importância para o um clima saudável e as vezes conversas técnicas menos formais;</li>
+                      <li>Programas de estímulo a qualidade de vida. Para que se tenha qualidade de vida no trabalho, é preciso que os colaboradores tenham qualidade de vida pessoal. Para tal, é importante o estímulo e até mesmo a criação de eventos que possam promover uma melhoria dos hábitos físicos, psicológicos e mentais;</li>
+                      <li>Promover um programa de mudança da cultura organizacional. Onde os funcionários tenham a oportunidade de contribuir com a tomada de decisões da empresa. O reconhecimento das atividades realizadas é também um ponto chave na satisfação do funcionário para promoção da mudança.</li>
+                      <li>A construção da qualidade de vida no trabalho na empresa requer um processo participativo, na qual devem existir etapas de discussão com os funcionários e sensibilização para o problema. Assim, é de extrema importância o treinamento dos colaboradores em certos tipos de habilidades pessoais, como trabalhar em equipe, saber resolver conflitos, ser confiável e criativo. Uma ferramenta que pode ser treinada a partir da aplicação de pequenos Workshops e que promove o bom diálogo entre as pessoas e auxilia a identificar com clareza as necessidades é a técnica de Comunicação Não Violenta, de Marshall Rosenberg. Veja os princípios da comunicação não violenta <a href="https://www.youtube.com/watch?v=uxABJFS1_j8"  target="_blank">clicando aqui.</a></li>
+                    </ul>
+                    </p>
+                    <p>Sendo assim, a Gerir Pessoas acredita que as ações sugeridas promoverão à sua empresa um diferencial em relação a outros negócios. A QVT contribuirá para a retenção de seus bons e excelentes funcionários.
+                    </p>
+                    <p>E aí? Já está utilizando a qualidade de vida no trabalho na sua empresa? Ou agora já pretende colocá-la em prática? Cadastre seu e-mail em nosso site e fique por dentro de todos os conteúdos e ferramentas gratuitas que a Gerir Pessoas oferece para apoiar seu negócio e fazer seu time trabalhar em alto nível.
+                    </p>
+                    
 
-                    </table>
-                    -->
-                    <input type="hidden" id="txtIP" />
-                    <input type="hidden" id="txtDataHora" />
-
-                    <!--
-                    <div class="titulo">
-                        <h1>AQUI ENTRA O TÍTULO DO POST 1</h1>
-                    </div>
-                    -->
-                    <p>
-                        Toda e qualquer empresa tem como mantra a sua cultura. Desde as mais tradicionais às recentes e
-                        inovadoras Startups. Quando se fala em <a
-                            href="como-a-gestao-de-pessoas-na-empresa-gera-lucros.html">gestão de pessoas em
-                            empresas</a>, uma coisa tem mudado bastante nos últimos tempos: a importância de ter uma
-                        cultura organizacional forte de toda equipe. Algo que vai muito além dos tradicionais quadros de
-                        missão, visão e valores que a gente sempre vê nas paredes de alguns escritórios.
-                    </p>
-                    <p>
-                        Segundo consultoria americana Bersin by Deloitte, 87% de 1000 executivos C-level entrevistados
-                        consideram muito importante a cultura organizacional da empresa. Nas últimas décadas, <a
-                            href="https://qulture.rocks/blog/o-que-e-cultura-organizacional/" target="_blank">esse
-                            conceito está mudando</a>. Alguns estudiosos definiram cultura como um conjunto de normas e
-                        práticas que uma organização desenvolve. Como o conjunto de valores e crenças que uma empresa
-                        fala como sendo seus.
-                    </p>
-                    <p>
-                        É de extrema importância que uma equipe tenha em mente a cultura da empresa. Isso reflete
-                        diretamente nos resultados. E isso, por um motivo muito simples, mas negligenciado por muitas
-                        empresas: o propósito! Sim, pessoas diferentes, que têm objetivos claros e um mindsets
-                        semelhantes, são capazes de conseguirem excelentes resultados quando trabalham juntas.
-                    </p>
-                    <p>
-                        A cultura também é muito presente no momento de recrutamento de novos talentos. Ou seja, saber
-                        quais perfis de candidatos se adequam mais a esse mindset coletivo é fundamental para que os
-                        futuros aprovados nos processos seletivos não tenham dificuldades de adaptação e causem
-                        conflitos.
-                    </p>
-                    <p>
-                        Jon Katzenbach, diretor da PwC e especialista em estratégias empresariais resumiu cultura
-                        organizacional. Disse que cultura organizacional é "feita de hábitos e respostas emocionais, a
-                        cultura de uma empresa é a soma dos padrões de comportamento, sentimento, pensamento e
-                        <b>crenças que seu autorreforçam</b> e que <b>determinam a forma como fazemos as coisas
-                            aqui</b>.”
-                    </p>
-                    <p>
-                        Ter uma cultura forte em sua empresa é um dos principais segredos para o seu crescimento. E
-                        estabelecer isso não é uma tarefa fácil. <a
-                            href="https://abstartups.com.br/2016/11/17/por-que-a-cultura-organizacional-e-importante-na-sua-startup/"
-                            target="_blank">As Startups já perceberam que isso é fundamental</a> e fazem o possível para
-                        que esse mantra seja como um manual a ser seguido pelos seus membros.
-                    </p>
-                    <p>
-                        Aqui na Gerir Pessoas, ajudamos empresas a mapear e identificar quais são essas características.
-                        Aquelas principais que devem ser reforçadas em seus colaboradores. Conheça nossas ferramentas e
-                        materiais gratuitos (inserir um link que vai para a página em que se encontrarão os conteúdos)!
-                        Comece agora a implantar uma cultura organizacional que levará sua empresa ao próximo nível!
-                    </p>
-
-
-
+                    
+                    
+                    
+                    
 
                 </div>
                 <!--Fim Post numero 1-->
             </div>
             <!--FINAL DIV COLUNA 1-->
 
+            <input type="hidden" id="txtIP" />
+            <input type="hidden" id="txtDataHora" />
             <!--Linha 1 Coluna 2 RIGHT BAR-->
             <div class="col-sm-4">
                 <form id="form-newsletter">
                     <div class="form-group" style="max-width:314px;">
-                        <input type="text" class="form-control" id="txtNome" placeholder="Nome:"required /><br />
-                        <input type="email" class="form-control" id="txtEmail" placeholder="Email:" required/><br />
+                        <input type="text" class="form-control" id="txtNome" placeholder="Nome:" required /><br />
+                        <input type="email" class="form-control" id="txtEmail" placeholder="Email:" required /><br />
                         <button type="button" class="btn btn-primary-first btn-lg btn-block" style="max-width:314px;"
-                            onclick="javascript:leadNews(document.getElementById('form-newsletter'));">RECEBA
-                            NOSSO
+                            onclick="javascript:leadNews(document.getElementById('form-newsletter'));">RECEBA NOSSO
                             CONTEÚDO</button>
                     </div>
                 </form>
@@ -390,17 +366,16 @@
         <div class="row" style=" padding-top: 20px;">
             <div class="col" style="background-color:#00FFBA;">
                 <h1 class="titulo-form-lead">Baixe nosso ebook e melhore a gestão da sua equipe</h1>
-                <form id="form-ebook">
-                    <input type="text" id="txtEbookNome" class="form-control" placeholder="Nome" required><br />
-                    <input type="email" id="txtEbookEmail" cclass="form-control" placeholder="E-mail" required> <br />
-                    <button type=" button" class="btn btn-primary-first btn-lg btn-block"
-                        onclick="javascript:leadEbook(document.getElementById('form-ebook'));">BAIXE
-                        GRATUITAMENTE O
+                <form name="" action="">
+                    <input type="text" id="txtEbookNome" class="form-control" placeholder="Nome"required /><br />
+                    <input type="email" id="txtEbookEmail" cclass="form-control" placeholder="E-mail"required /> <br />
+                    <button type=" button" class="btn btn-primary-first btn-lg btn-block">BAIXE GRATUITAMENTE O
                         E-BOOK</button>
                 </form>
             </div>
         </div>
     </div>
+
 
 
 
@@ -452,9 +427,9 @@
                     <form id="form-banner" method="POST" action="javascript:;" onsubmit="javascript:return false();">
                         <div class="form-group" style="max-width:314px;">
 
-                            <input type="text" class="form-control" id="txtBannerNome" placeholder="Nome completo" />
+                            <input type="text" class="form-control" id="txtBannerNome" placeholder="Nome completo" required />
 
-                            <input type="email" class="form-control" id="txtBannerEmail" placeholder="Email" />
+                            <input type="email" class="form-control" id="txtBannerEmail" placeholder="Email" required />
 
                             <input type="text" class="form-control" id="txtBannerNumFuncionarios"
                                 placeholder="Número de funcionários" />
@@ -512,7 +487,6 @@
                 modal.style.display = "none";
             }
         }
-
 
         // Usage
 
