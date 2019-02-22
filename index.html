@@ -123,7 +123,7 @@
         };
 
         firebase.initializeApp(config);
-        function writeNewLead(vNome, vEmail, vTipo, vData, vIp) {
+        function writeNewLead(vNome, vEmail, vTipo, vData, vIp, vTeste = 'N', vTaxa = 'NA', vNumFunc = 'NA') {
             
             if (nome == '' || email == ''){
                 alert("CUIDADO! \n\nPREENCHA OS DADOS NOME E EMAIL ANTES DE CONTINUAR.");
@@ -136,7 +136,10 @@
                 email: vEmail,
                 tipo: vTipo,
                 data: vData,
-                ip: vIp
+                ip: vIp,
+                teste: vTeste,
+                taxa: vTaxa,
+                nfunc: vNumFunc
             };
 
             console.log(postData);
@@ -187,23 +190,37 @@
             try {
 
                 nome = frm.txtBannerNome.value;
+                
                 email = frm.txtBannerEmail.value;
+                
                 tipo = 'B2?';
-                numfunc = frm.txtBannerNumFuncionarios.value;
-                taxa = frm.txtBannerTaxaRotatividade.value;
+                
+                numfunc = '0'+frm.txtBannerNumFuncionarios.value;
+                
+                taxa = '0'+frm.txtBannerTaxaRotatividade.value;
+                
                 data = document.getElementById('txtDataHora').value;
+                
                 ip = document.getElementById('txtIP').value;
-
-               
-               
-                if (writeNewLead(nome, email, tipo, data, ip)){
+                
+                if (writeNewLead(nome, email, tipo, data, ip, 'N', taxa, numfunc)){
+                
                     frm.txtBannerNome.value = '';
-                    frm.txtBannerEmail.value = ''; 
-                    frm.txtBannerNumFuncionarios.value = ''; 
+                    
+                    frm.txtBannerEmail.value = '';
+                     
+                    frm.txtBannerNumFuncionarios.value = '';
+                     
                     frm.txtBannerTaxaRotatividade.value = '';
-                    alert("Obrigado."); 
+                    
+                    alert("Obrigado.");
+                    
+                    document.getElementById('banner-01').style.display = 'none';                                 
+                     
                 }else{
-                    frm.txtBannerNome.focus();                
+                
+                    frm.txtBannerNome.focus();
+                                    
                 }
 
             } catch (e) {
@@ -320,7 +337,7 @@
                 </div>
                 <!--Fim Div logo-->
                 <div>
-                    <img src="images/imagem.png" width="100%" />
+                    <img src="images/imagem.jpg" width="100%" />
                 </div>
 
                 <hr />
@@ -344,9 +361,7 @@
                 </a>
 
 
-                <input type="hidden" id="txtIP" />
-                <input type="hidden" id="txtDataHora" />
-
+                
 
                 <!--            
                         <table style="background-color:#00FFBA; width:100%;">
@@ -378,6 +393,38 @@
             <!--Fim Post numero 1-->
             <br />
             <hr />
+            
+            <div class="corpo-post">
+                        <div style="display:flex;flex-direction:row;flex-wrap:wrap;background:#f9f9f9">
+                            <div>
+                                <img src="images/qualidade-de-vida-no-trabalho.jpg"
+                                    style="width:265px;"
+                                    alt="QUALIDADE DE VIDA NO TRABALHO" />
+
+                            </div>
+                            <div style="max-width:427px;background-color: #00FFBA;color: #005CA9;">
+                                <h1><a href="qualidade-de-vida-no-trabalho.html">QUALIDADE DE VIDA NO TRABALHO</a></h1>
+                            </div>
+                        </div>
+                </a>
+
+
+                <input type="hidden" id="txtIP" />
+                <input type="hidden" id="txtDataHora" />
+
+                <p>
+                    Sabemos que um ambiente de trabalho agradável pode representar o caminho das pedras para o sucesso de uma organização. A qualidade de vida no trabalho dos funcionários está muito relacionada ao nível de envolvimento dos mesmos nas decisões da empresa. O sentimento de dono, o sentimento ser mais do que apenas mão-de-obra. Em outras palavras, aumentando o engajamento dos funcionários os lucros aumentam.
+                </p>
+                <div class="leia-mais"><a class="leia"
+                        href="qualidade-de-vida-no-trabalho.html">Leia mais</a></div>
+            </div>
+            
+            
+                  
+            <br />
+            <hr />
+                                    
+                                                                                                                        
 
             <div class="date-hora">20 DE FEV. | 15H30</div>
 
@@ -436,6 +483,7 @@
         </p>
         <div class="leia-mais"><a class="leia" href="o-que-e-turnover.html">Leia
                 mais</a></div>
+                                
     </div>
     <!--- FIM DO POST 3 -->
     <br />
@@ -508,7 +556,7 @@
         ####    
                 Última Alteração Em:
         ####    
-                21/02/2019 às 06:39 (Diego)
+                21/02/2019 às 23:59 (Diego)
         ####    
         
         ####    ####    ####    ####    ####    

@@ -132,7 +132,7 @@
         };
 
         firebase.initializeApp(config);
-        function writeNewLead(vNome, vEmail, vTipo, vData, vIp) {
+        function writeNewLead(vNome, vEmail, vTipo, vData, vIp, vTeste = 'N', vTaxa = 'NA', vNumFunc = 'NA') {
             
             if (nome == '' || email == ''){
                 alert("CUIDADO! \n\nPREENCHA OS DADOS NOME E EMAIL ANTES DE CONTINUAR.");
@@ -145,7 +145,10 @@
                 email: vEmail,
                 tipo: vTipo,
                 data: vData,
-                ip: vIp
+                ip: vIp,
+                teste: vTeste,
+                taxa: vTaxa,
+                nfunc: vNumFunc
             };
 
             console.log(postData);
@@ -196,23 +199,37 @@
             try {
 
                 nome = frm.txtBannerNome.value;
+                
                 email = frm.txtBannerEmail.value;
+                
                 tipo = 'B2?';
-                numfunc = frm.txtBannerNumFuncionarios.value;
-                taxa = frm.txtBannerTaxaRotatividade.value;
+                
+                numfunc = '0'+frm.txtBannerNumFuncionarios.value;
+                
+                taxa = '0'+frm.txtBannerTaxaRotatividade.value;
+                
                 data = document.getElementById('txtDataHora').value;
+                
                 ip = document.getElementById('txtIP').value;
-
-               
-               
-                if (writeNewLead(nome, email, tipo, data, ip)){
+                
+                if (writeNewLead(nome, email, tipo, data, ip, 'N', taxa, numfunc)){
+                
                     frm.txtBannerNome.value = '';
-                    frm.txtBannerEmail.value = ''; 
-                    frm.txtBannerNumFuncionarios.value = ''; 
+                    
+                    frm.txtBannerEmail.value = '';
+                     
+                    frm.txtBannerNumFuncionarios.value = '';
+                     
                     frm.txtBannerTaxaRotatividade.value = '';
-                    alert("Obrigado."); 
+                    
+                    alert("Obrigado.");
+                    
+                    document.getElementById('banner-01').style.display = 'none';                                 
+                     
                 }else{
-                    frm.txtBannerNome.focus();                
+                
+                    frm.txtBannerNome.focus();
+                                    
                 }
 
             } catch (e) {
@@ -447,19 +464,21 @@
             <!--Fim Linha 1 Coluna 2 RIGHT BAR-->
         </div>
         <!--FIm row principal do container-->
-        <div class="row" style=" padding-top: 20px;">
-            <div class="col" style="background-color:#00FFBA;">
-                <h1 class="titulo-form-lead">Baixe nosso ebook e melhore a gestão da sua equipe</h1>
-                <form name="" action="">
-                    <input type="text" id="txtEbookNome" class="form-control" placeholder="Nome" required="required"><br />
-                    <input type="email" id="txtEbookEmail" cclass="form-control" placeholder="E-mail" required="required"> <br />
-                    <button type=" button" class="btn btn-primary-first btn-lg btn-block">BAIXE GRATUITAMENTE O
-                        E-BOOK</button>
-                </form>
-            </div>
+        
+    <div class="row" style=" padding-top: 20px;">
+        <div class="col" style="background-color:#00FFBA;">
+            <h1 class="titulo-form-lead">Baixe nosso ebook e melhore a gestão da sua equipe</h1>
+            <form id="form-ebook">
+                <a href="#ebook"><input type="text" id="txtEbookNome" class="form-control" placeholder="Nome"
+                        required></a><br />
+                <input type="email" id="txtEbookEmail" class="form-control" placeholder="E-mail" required> <br />
+                <button type=" button" class="btn btn-primary-first btn-lg btn-block"
+                    onclick="javascript:leadEbook(document.getElementById('form-ebook'));">BAIXE GRATUITAMENTE O
+                    E-BOOK</button>
+            </form>
         </div>
     </div>
-
+    </div>
 
 
 
@@ -477,7 +496,7 @@
         ####    
                 Última Alteração Em:
         ####    
-                21/02/2019 às 06:39 (Diego)
+                21/02/2019 às 23:59 (Diego)
         ####    
         
         ####    ####    ####    ####    ####    
@@ -511,9 +530,10 @@
                     <form id="form-banner" method="POST" action="javascript:;" onsubmit="javascript:return false();">
                         <div class="form-group" style="max-width:314px;">
 
-                            <input type="text" class="form-control" id="txtBannerNome" placeholder="Nome completo" required="required" />
+                            <input type="text" class="form-control" id="txtBannerNome" placeholder="Nome completo"
+                                required />
 
-                            <input type="email" class="form-control" id="txtBannerEmail" placeholder="Email" required="required" />
+                            <input type="email" class="form-control" id="txtBannerEmail" placeholder="Email" required />
 
                             <input type="text" class="form-control" id="txtBannerNumFuncionarios"
                                 placeholder="Número de funcionários" />
@@ -522,7 +542,7 @@
                                 placeholder="Taxa de rotatividade*" />
 
                             <button type="button" class="btn btn-primary-first btn-lg btn-block"
-                                onclick="javascript:leadBanner(document.getElementById('form-banner'));">RECEBER
+                                onclick="javascript:leadBanner(document.getElementById('form-banner'))">RECEBER
                                 GR&Aacute;TIS</button>
                         </div>
                     </form>
